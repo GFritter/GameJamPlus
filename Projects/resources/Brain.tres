@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://by3qt8jhcoiv3"]
+
+[ext_resource type="Script" path="res://resources/Stat.cs" id="1_x6gnq"]
+
+[resource]
+script = ExtResource("1_x6gnq")
+name = "Brain"
+minValue = 0.0
+currentValue = 100.0
+maxValue = 100.0

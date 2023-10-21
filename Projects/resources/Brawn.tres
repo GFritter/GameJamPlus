@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2driynhfcqy8"]
+
+[ext_resource type="Script" path="res://resources/Stat.cs" id="1_wbypw"]
+
+[resource]
+script = ExtResource("1_wbypw")
+name = "Brawn"
+minValue = 0.0
+currentValue = 100.0
+maxValue = 100.0

@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://216asl1m8kav"]
+
+[ext_resource type="Script" path="res://objects/player/PlayerController.cs" id="1_6fvmo"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/Hunger.tres" id="2_gtod8"]
+[ext_resource type="Texture2D" uid="uid://c6q0dp3qqw6ka" path="res://art/tileSet.png" id="2_jltir"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/Brain.tres" id="3_fc23u"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/Brawn.tres" id="4_elnbv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mylsv"]
+atlas = ExtResource("2_jltir")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6orgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mylsv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8m2a"]
+size = Vector2(34, 32)
+
+[node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_6fvmo")
+stats = Array[Resource]([ExtResource("2_gtod8"), ExtResource("3_fc23u"), ExtResource("4_elnbv")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6orgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_t8m2a")

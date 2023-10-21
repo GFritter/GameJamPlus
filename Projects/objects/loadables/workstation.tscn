@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgkrh524f6phj"]
+
+[ext_resource type="PackedScene" uid="uid://d2n4wuf358gvc" path="res://objects/loadables/baseLoadable.tscn" id="1_frrhk"]
+[ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableConsumer.cs" id="2_mm11n"]
+[ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="2_xap4v"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/Hunger.tres" id="3_tig8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmvjb"]
+atlas = ExtResource("2_xap4v")
+region = Rect2(68, 238, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lx8yu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmvjb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baseLoadable" instance=ExtResource("1_frrhk")]
+script = ExtResource("2_mm11n")
+statsConsumed = Array[Resource]([ExtResource("3_tig8i")])
+rateConsumed = Array[float]([1.0])
+maxValue = 0.0
+decayRate = 0.0
+increment = 0.0
+
+[node name="AnimatedSprite2D" parent="SpriteCollider" index="1"]
+sprite_frames = SubResource("SpriteFrames_lx8yu")

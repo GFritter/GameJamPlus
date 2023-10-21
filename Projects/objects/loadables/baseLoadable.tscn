@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2n4wuf358gvc"]
+
+[ext_resource type="Script" path="res://objects/loadables/scripts/iLoadable.cs" id="1_assvm"]
+[ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="2_cqrxw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
+radius = 20.025
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3enh4"]
+size = Vector2(17, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a20yy"]
+atlas = ExtResource("2_cqrxw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m40mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a20yy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baseLoadable" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar")]
+script = ExtResource("1_assvm")
+zoneArea = NodePath("ZoneArea")
+bar = NodePath("ProgressBar")
+maxValue = 100.0
+decayRate = 0.2
+increment = 3.0
+
+[node name="ZoneArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneArea"]
+shape = SubResource("CircleShape2D_4g8ft")
+
+[node name="SpriteCollider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteCollider"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_3enh4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteCollider"]
+sprite_frames = SubResource("SpriteFrames_m40mf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = -10.0
+value = 0.17
+show_percentage = false
+
+[connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
+[connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

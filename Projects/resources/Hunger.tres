@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://30lwcvx68b8g"]
+
+[ext_resource type="Script" path="res://resources/Stat.cs" id="1_mwwvb"]
+
+[resource]
+script = ExtResource("1_mwwvb")
+name = "Hunger"
+minValue = 0.0
+currentValue = 100.0
+maxValue = 100.0
