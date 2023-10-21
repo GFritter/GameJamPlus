@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Security;
 
 public partial class UIManager : Control
 {
@@ -8,12 +9,16 @@ public partial class UIManager : Control
 	public ProgressBar hungerBar,brainBar,brawnBar;
 
 	[Export]
-	Stat hungerStat,brainStat,brawnStat;
+	Stat hungerStat,brainStat,brawnStat,moneyStat,foodStat;
+
+	[Export]
+	public Label moneyCount,foodCount;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SetupBars();
+		SetupLabels();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,6 +45,15 @@ public partial class UIManager : Control
 
 	}
 
+	public void SetupLabels()
+	{
+		moneyCount.Text = moneyStat.currentValue.ToString();
+		moneyStat.OnUpdate+=UpdateMoneyCount;
+
+		foodCount.Text = foodStat.currentValue.ToString();
+		foodStat.OnUpdate+=UpdateFoodCount;
+	}
+
 
 	public void UpdateHungerBar(float value)
 	{
@@ -54,6 +68,16 @@ public partial class UIManager : Control
 	public void UpdateBrawnBar(float value)
 	{
 		brawnBar.Value = value;
+	}
+
+	public void UpdateMoneyCount(float value)
+	{
+		moneyCount.Text = value.ToString();
+	}
+
+	public void UpdateFoodCount(float value)
+	{
+		foodCount.Text = value.ToString();
 	}
 
 

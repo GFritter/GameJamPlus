@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c3ll01kun3xvi"]
+
+[ext_resource type="Script" path="res://resources/player_resources/Stat.cs" id="1_qom2c"]
+
+[resource]
+script = ExtResource("1_qom2c")
+name = ""
+minValue = 0.0
+currentValue = 0.0
+maxValue = 10.0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://chpt7ar0o68px"]
+
+[ext_resource type="PackedScene" uid="uid://cgkrh524f6phj" path="res://objects/loadables/workstation.tscn" id="1_5j5ib"]
+[ext_resource type="Script" path="res://objects/loadables/iLoadableOnEnd.cs" id="2_25env"]
+[ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="3_b1i23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er5nc"]
+atlas = ExtResource("3_b1i23")
+region = Rect2(187, 272, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjp53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er5nc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baseLoadable" instance=ExtResource("1_5j5ib")]
+script = ExtResource("2_25env")
+onEndStatConsumed = null
+onEndStatConsumedAmount = null
+statsConsumed = null
+rateConsumed = null
+
+[node name="AnimatedSprite2D" parent="SpriteCollider" index="1"]
+sprite_frames = SubResource("SpriteFrames_xjp53")

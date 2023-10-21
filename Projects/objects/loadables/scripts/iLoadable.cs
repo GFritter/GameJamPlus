@@ -76,7 +76,7 @@ public partial class iLoadable : Node2D
 		
 		currentValue+=increment;
 
-		if(currentValue>maxValue)
+		if(currentValue>=maxValue)
 		{
 			OnComplete();
 		}
@@ -88,9 +88,9 @@ public partial class iLoadable : Node2D
 		bar.Value = currentValue;
 	}
 
-	protected void OnComplete()
+	protected virtual void OnComplete()
 	{
-		GD.Print("Voce ganhou palhaco");
+		//GD.Print("Voce ganhou palhaco");
 		EmitSignal("onComplete");
 		Reset();
 	}

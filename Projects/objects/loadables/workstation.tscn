@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d2n4wuf358gvc" path="res://objects/loadables/baseLoadable.tscn" id="1_frrhk"]
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableConsumer.cs" id="2_mm11n"]
 [ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="2_xap4v"]
-[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/Hunger.tres" id="3_tig8i"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="3_j4j8m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmvjb"]
 atlas = ExtResource("2_xap4v")
@@ -22,7 +22,7 @@ animations = [{
 
 [node name="baseLoadable" instance=ExtResource("1_frrhk")]
 script = ExtResource("2_mm11n")
-statsConsumed = Array[Resource]([ExtResource("3_tig8i")])
+statsConsumed = Array[Resource]([ExtResource("3_j4j8m")])
 rateConsumed = Array[float]([1.0])
 maxValue = 0.0
 decayRate = 0.0

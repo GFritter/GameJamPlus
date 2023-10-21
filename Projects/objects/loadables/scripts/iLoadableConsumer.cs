@@ -15,10 +15,10 @@ public partial class iLoadableConsumer : iLoadable
 {
 
 	[Export]
-	Array<Stat> statsConsumed;
+	public Array<Stat> statsConsumed;
 
 	[Export]
-	Array<float>rateConsumed;
+	public Array<float>rateConsumed;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -52,7 +52,7 @@ public partial class iLoadableConsumer : iLoadable
 	}
 
 	//maybe can become a variable too
-	protected bool CheckValid()
+	protected virtual bool CheckValid()
 	{
 		//GD.Print("vou validar");
 		bool valid = true;
@@ -70,6 +70,7 @@ public partial class iLoadableConsumer : iLoadable
 		return valid;
 
 	}
+	
 
 
 	protected void Consume()
@@ -81,7 +82,7 @@ public partial class iLoadableConsumer : iLoadable
 
 		}
 
-		GD.Print("To consumindo");
+		//GD.Print("To consumindo");
 
 	}
 

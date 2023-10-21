@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwsehrr3axi8d"]
+[gd_scene load_steps=14 format=3 uid="uid://dwsehrr3axi8d"]
 
 [ext_resource type="Texture2D" uid="uid://doesyar8n0cyi" path="res://art/tilesetTeste.png" id="1_jwboi"]
 [ext_resource type="PackedScene" uid="uid://216asl1m8kav" path="res://objects/player/PlayerController.tscn" id="2_porv7"]
 [ext_resource type="PackedScene" uid="uid://d2n4wuf358gvc" path="res://objects/loadables/baseLoadable.tscn" id="3_ivaxp"]
 [ext_resource type="PackedScene" uid="uid://tcu5qlgcj5a0" path="res://scenes/UI.tscn" id="4_24b4f"]
 [ext_resource type="PackedScene" uid="uid://cgkrh524f6phj" path="res://objects/loadables/workstation.tscn" id="5_kbgu0"]
-[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/Hunger.tres" id="6_ggp3g"]
-[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/Brain.tres" id="7_3f50e"]
-[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/Brawn.tres" id="8_lyxyk"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="6_ggp3g"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="7_3f50e"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="8_lyxyk"]
+[ext_resource type="PackedScene" uid="uid://chpt7ar0o68px" path="res://objects/loadables/iLoadableOnEnd.tscn" id="9_krktt"]
+[ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="10_626jx"]
+[ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="11_7g5ay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh3qq"]
 texture = ExtResource("1_jwboi")
@@ -40,7 +43,7 @@ offset_left = 1.0
 offset_right = 1.0
 
 [node name="pcWorkstation" parent="." instance=ExtResource("5_kbgu0")]
-position = Vector2(618, 536)
+position = Vector2(52, 87)
 statsConsumed = Array[Resource]([ExtResource("6_ggp3g"), ExtResource("7_3f50e")])
 rateConsumed = Array[float]([0.2, 1.0])
 maxValue = 1000.0
@@ -53,4 +56,13 @@ statsConsumed = Array[Resource]([ExtResource("6_ggp3g"), ExtResource("8_lyxyk"),
 rateConsumed = Array[float]([0.2, 1.0, -0.5])
 maxValue = 100.0
 decayRate = 0.01
+increment = 1.0
+
+[node name="Fridge" parent="." instance=ExtResource("9_krktt")]
+position = Vector2(332, 425)
+onEndStatConsumed = Array[Resource]([ExtResource("10_626jx"), ExtResource("11_7g5ay")])
+onEndStatConsumedAmount = Array[float]([25.0, -1.0])
+statsConsumed = Array[Resource]([])
+rateConsumed = Array[Resource]([])
+maxValue = 100.0
 increment = 1.0

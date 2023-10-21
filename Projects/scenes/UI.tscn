@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://tcu5qlgcj5a0"]
+[gd_scene load_steps=8 format=3 uid="uid://tcu5qlgcj5a0"]
 
 [ext_resource type="Script" path="res://scenes/UIManager.cs" id="1_cbslb"]
-[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/Hunger.tres" id="2_s8pto"]
-[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/Brain.tres" id="3_iiv8m"]
-[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/Brawn.tres" id="4_6h57t"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="2_6s4p8"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_31q5a"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_avs2a"]
+[ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="5_6kcut"]
+[ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="6_7r307"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qe8fb"]
 specular_color = Color(0.682353, 0.643137, 0.262745, 1)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("hungerBar", "brainBar", "brawnBar")]
+[node name="UI" type="Control" node_paths=PackedStringArray("hungerBar", "brainBar", "brawnBar", "moneyCount", "foodCount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,9 +21,13 @@ script = ExtResource("1_cbslb")
 hungerBar = NodePath("HungerBar/ProgressBar")
 brainBar = NodePath("BrainBar/ProgressBar")
 brawnBar = NodePath("BrawnBar/ProgressBar")
-hungerStat = ExtResource("2_s8pto")
-brainStat = ExtResource("3_iiv8m")
-brawnStat = ExtResource("4_6h57t")
+hungerStat = ExtResource("2_6s4p8")
+brainStat = ExtResource("3_31q5a")
+brawnStat = ExtResource("4_avs2a")
+moneyStat = ExtResource("5_6kcut")
+foodStat = ExtResource("6_7r307")
+moneyCount = NodePath("Money")
+foodCount = NodePath("Food")
 
 [node name="HungerBar" type="Control" parent="."]
 anchors_preset = 0
@@ -91,3 +97,17 @@ offset_top = 4.0
 offset_right = 301.0
 offset_bottom = 31.0
 show_percentage = false
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 9.0
+offset_right = 1140.0
+offset_bottom = 32.0
+
+[node name="Food" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1036.0
+offset_top = 9.0
+offset_right = 1076.0
+offset_bottom = 32.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bgygxsp3ptoqh"]
+
+[ext_resource type="Script" path="res://resources/player_resources/Stat.cs" id="1_ww6fs"]
+
+[resource]
+script = ExtResource("1_ww6fs")
+name = ""
+minValue = 0.0
+currentValue = 100.0
+maxValue = 99999.0
