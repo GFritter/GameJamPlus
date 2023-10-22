@@ -59,7 +59,7 @@ public partial class iLoadableConsumer : iLoadable
 
 		for(int i =0;i<statsConsumed.Count;++i)
 		{
-			if(statsConsumed[i].currentValue - rateConsumed[i] <= statsConsumed[i].minValue)
+			if(statsConsumed[i].currentValue - rateConsumed[i] < statsConsumed[i].minValue)
 			{
 				valid=false;
 			}

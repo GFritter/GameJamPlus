@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cnkyhgwxt625q"]
+
+[ext_resource type="Script" path="res://resources/attributes/Attribute.cs" id="1_qla6c"]
+
+[resource]
+script = ExtResource("1_qla6c")
+flatRate = 1.0
+modifier = 1.0
