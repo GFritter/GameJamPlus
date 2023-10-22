@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwsehrr3axi8d"]
+[gd_scene load_steps=15 format=3 uid="uid://dwsehrr3axi8d"]
 
 [ext_resource type="Texture2D" uid="uid://doesyar8n0cyi" path="res://art/tilesetTeste.png" id="1_jwboi"]
 [ext_resource type="PackedScene" uid="uid://216asl1m8kav" path="res://objects/player/PlayerController.tscn" id="2_porv7"]
@@ -11,6 +11,9 @@
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="10_626jx"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="11_7g5ay"]
 [ext_resource type="PackedScene" uid="uid://dknjoa2q8vx7" path="res://scenes/NewUI.tscn" id="11_15qmc"]
+[ext_resource type="PackedScene" uid="uid://b2v1p2nkkjc1d" path="res://objects/loadables/dishWorkstation.tscn" id="11_njlc6"]
+[ext_resource type="PackedScene" uid="uid://bhnqsq4p5ct0i" path="res://objects/loadables/stoveWorkstation.tscn" id="12_en6aa"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh3qq"]
 texture = ExtResource("1_jwboi")
@@ -34,9 +37,11 @@ layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609,
 [node name="PlayerController" parent="." instance=ExtResource("2_porv7")]
 position = Vector2(158, 168)
 
+
 [node name="baseLoadable" parent="." instance=ExtResource("3_ivaxp")]
 position = Vector2(420, 583)
 decayRate = 1.0
+
 
 [node name="pcWorkstation" parent="." instance=ExtResource("5_kbgu0")]
 position = Vector2(52, 87)
@@ -55,7 +60,7 @@ decayRate = 0.01
 increment = 1.0
 
 [node name="Fridge" parent="." instance=ExtResource("9_krktt")]
-position = Vector2(332, 425)
+position = Vector2(648, 603)
 onEndStatConsumed = Array[Resource]([ExtResource("10_626jx"), ExtResource("11_7g5ay")])
 onEndStatConsumedAmount = Array[float]([25.0, -1.0])
 statsConsumed = Array[Resource]([])
@@ -63,10 +68,17 @@ rateConsumed = Array[Resource]([])
 maxValue = 100.0
 increment = 1.0
 
-[node name="UI" parent="." instance=ExtResource("11_15qmc")]
-offset_left = 120.0
-offset_top = 108.0
-offset_right = 120.0
-offset_bottom = 108.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+
+[node name="Dish" parent="." instance=ExtResource("11_njlc6")]
+position = Vector2(838, 595)
+maxValue = 100.0
+decayRate = 0.1
+increment = 1.0
+
+[node name="baseLoadable" parent="." instance=ExtResource("12_en6aa")]
+position = Vector2(1027, 601)
+statsConsumed = Array[Resource]([])
+rateConsumed = Array[Resource]([])
+maxValue = 100.0
+decayRate = 0.2
+increment = 1.0

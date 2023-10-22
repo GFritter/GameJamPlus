@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2v1p2nkkjc1d"]
+
+[ext_resource type="PackedScene" uid="uid://cgkrh524f6phj" path="res://objects/loadables/workstation.tscn" id="1_v384p"]
+[ext_resource type="Script" path="res://objects/loadables/iLoadableOnEnd.cs" id="2_ulr7y"]
+[ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="3_3u6qj"]
+[ext_resource type="Resource" uid="uid://mabiv0jdk8vd" path="res://resources/player_resources/Dish.tres" id="3_gc5ep"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="4_wjyt7"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_ddllq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryiwc"]
+atlas = ExtResource("3_3u6qj")
+region = Rect2(136, 204, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjp53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryiwc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baseLoadable" instance=ExtResource("1_v384p")]
+script = ExtResource("2_ulr7y")
+onEndStatConsumed = Array[Resource]([ExtResource("3_gc5ep")])
+onEndStatConsumedAmount = Array[float]([1.0])
+statsConsumed = Array[Resource]([ExtResource("4_wjyt7"), ExtResource("5_ddllq")])
+rateConsumed = Array[float]([0.2, 0.2])
+
+[node name="AnimatedSprite2D" parent="SpriteCollider" index="1"]
+sprite_frames = SubResource("SpriteFrames_xjp53")

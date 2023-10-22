@@ -64,7 +64,7 @@ public partial class iLoadable : Node2D
 		
 		currentValue +=increment+value;
 		
-		if(currentValue>maxValue)
+		if(currentValue>=maxValue)
 		{
 			OnComplete();
 		}
