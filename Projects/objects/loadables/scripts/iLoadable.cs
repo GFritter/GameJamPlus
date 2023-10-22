@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class iLoadable : Node2D
 {
@@ -12,10 +13,7 @@ public partial class iLoadable : Node2D
 	public ProgressBar bar;
 
 	[Export]
-	public float minValue, currentValue, maxValue,decayRate;
-
-	[Export]
-	public float increment;
+	public float minValue, currentValue, maxValue,decayPerSecond;
 
 	[Export]
 	public bool active;
@@ -25,15 +23,24 @@ public partial class iLoadable : Node2D
 
 	[Signal]
 	public delegate void onCompleteEventHandler();
+	
+	[Signal]
+	public delegate void onLevelUpEventHandler();
+
+	[Signal]
+	public delegate void onLevelDownEventHandler();
 
 	[Export]
 	public Attribute attribute;
 
+	[Export] public Errand errand;
+	[Export] public Timer levelDownTimer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Reset();
+		levelDownTimer.Timeout += OnLevelDown;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,31 +48,28 @@ public partial class iLoadable : Node2D
 	{
 		if(active && currentValue<maxValue)
 		{
-			AddProgress();
+			AddProgress((float)delta);
 		}
 
 		if(currentValue>minValue)
 		{
-			currentValue-=decayRate;
+			currentValue -= decayPerSecond * (float)delta;
 			UpdateBar();
 
 			if(currentValue<=minValue)
 			{
 				currentValue = minValue;
-				EmitSignal("onEmpty");
+				OnEmpty();
 			}
 
 		}
-			
-
-			
-
+		
 	}
 
 	protected void AddProgress(float value)
 	{
 		
-		currentValue +=(attribute.flatRate+value)*attribute.modifier;
+		currentValue += (attribute.flatRate*attribute.modifier) * value;
 		
 		if(currentValue>=maxValue)
 		{
@@ -93,9 +97,38 @@ public partial class iLoadable : Node2D
 
 	protected virtual void OnComplete()
 	{
-		//GD.Print("Voce ganhou palhaco");
+		levelDownTimer.Stop();
+		errand.currentXP += 1;
+		UpdateLevel();
 		EmitSignal("onComplete");
 		Reset();
+	}
+	protected virtual void UpdateLevel(){
+		if(errand.currentLevel > errand.maxLevel){
+			errand.currentLevel = errand.maxLevel;
+			errand.currentXP = 0;
+			return;
+		}
+		if(errand.currentXP >= errand.neededXPPerLevel[errand.currentLevel]){
+			errand.currentXP = 0;
+			errand.currentLevel += 1;
+			
+			EmitSignal("onLevelUp");
+		}
+	}
+	protected virtual void OnEmpty(){
+		EmitSignal("onEmpty");
+		if(levelDownTimer.IsStopped() && errand.doesLevelDecay){
+			levelDownTimer.Start(errand.levelDownTimePerLevel[errand.currentLevel]);
+		}
+	}
+	protected virtual void OnLevelDown(){
+		errand.currentLevel -= 1;
+		errand.currentXP = 0;
+		if(errand.currentLevel < 0){
+			errand.currentLevel = 0;
+		}
+		EmitSignal("onLevelDown");
 	}
 
 	protected void Reset()

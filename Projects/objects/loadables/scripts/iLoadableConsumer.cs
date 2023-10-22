@@ -30,36 +30,36 @@ public partial class iLoadableConsumer : iLoadable
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(active && currentValue<maxValue && CheckValid())
+		if(active && currentValue<maxValue && CheckValid((float)delta))
 		{
 		
-			AddProgress();
-			Consume();
+			AddProgress((float)delta);
+			Consume((float)delta);
 		}
 
 		if(currentValue>minValue)
 		{
-			currentValue-=decayRate;
+			currentValue-=decayPerSecond * (float)delta;
 			UpdateBar();
 
 			if(currentValue<=minValue)
 			{
 				currentValue = minValue;
-				EmitSignal("onEmpty");
+				OnEmpty();
 			}
 
 		}
 	}
 
 	//maybe can become a variable too
-	protected virtual bool CheckValid()
+	protected virtual bool CheckValid(float delta)
 	{
 		//GD.Print("vou validar");
 		bool valid = true;
 
 		for(int i =0;i<statsConsumed.Count;++i)
 		{
-			if(statsConsumed[i].currentValue - rateConsumed[i] < statsConsumed[i].minValue)
+			if(statsConsumed[i].currentValue - rateConsumed[i] * delta < statsConsumed[i].minValue)
 			{
 				valid=false;
 			}
@@ -73,11 +73,11 @@ public partial class iLoadableConsumer : iLoadable
 	
 
 
-	protected void Consume()
+	protected void Consume(float delta)
 	{
 		for(int i =0;i<statsConsumed.Count;++i)
 		{
-			statsConsumed[i].currentValue -= rateConsumed[i];
+			statsConsumed[i].currentValue -= rateConsumed[i] * delta;
 			statsConsumed[i].Update();
 
 		}
