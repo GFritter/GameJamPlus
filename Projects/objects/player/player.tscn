@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbgvjdesbaqm2"]
+[gd_scene load_steps=13 format=3 uid="uid://cbgvjdesbaqm2"]
 
 [ext_resource type="Script" path="res://objects/player/PlayerController.cs" id="1_qwb3w"]
 [ext_resource type="Texture2D" uid="uid://deeebks6nijl0" path="res://art/player/player_idle_1.png" id="2_7g2ag"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="2_mqsl0"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="3_g1jup"]
 [ext_resource type="Texture2D" uid="uid://5sjpr2aey7h5" path="res://art/player/player_walk_1.png" id="3_jaccg"]
 [ext_resource type="Texture2D" uid="uid://bxh7cd73imvrl" path="res://art/player/player_idle.png" id="4_1kxg6"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_7gdn7"]
 
 [sub_resource type="Animation" id="Animation_gyy0j"]
 length = 0.001
@@ -136,8 +139,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_gidsh"]
 radius = 9.05539
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("starvationTimer", "brainDeadTimer", "tiredTimer")]
 script = ExtResource("1_qwb3w")
+brainStat = ExtResource("2_mqsl0")
+hungerStat = ExtResource("3_g1jup")
+brawnStat = ExtResource("4_7gdn7")
+starvationTimer = NodePath("StarvationTimer")
+brainDeadTimer = NodePath("BrainDeadTimer")
+tiredTimer = NodePath("TiredTimer")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 
@@ -153,3 +162,9 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 12)
 shape = SubResource("CircleShape2D_gidsh")
+
+[node name="StarvationTimer" type="Timer" parent="."]
+
+[node name="BrainDeadTimer" type="Timer" parent="."]
+
+[node name="TiredTimer" type="Timer" parent="."]

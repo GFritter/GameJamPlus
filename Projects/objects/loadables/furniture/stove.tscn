@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0gw8kri1y3uy"]
+[gd_scene load_steps=9 format=3 uid="uid://d0gw8kri1y3uy"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_dvufg"]
-[ext_resource type="Resource" uid="uid://b04sibqlcxnyc" path="res://resources/attributes/workRate.tres" id="6_711h8"]
-[ext_resource type="Resource" uid="uid://cb2ru201h7pv4" path="res://resources/errands/WorkErrand.tres" id="7_eqf77"]
+[ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="3_krnil"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_q71fe"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="4_4v10c"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_s8ake"]
+[ext_resource type="Resource" uid="uid://ckwwfvsslv4ld" path="res://resources/attributes/cookRate.tres" id="6_02qk3"]
 [ext_resource type="Texture2D" uid="uid://roul0l6nt3bb" path="res://art/furniture/fogão.png" id="8_nkmxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
@@ -10,12 +13,14 @@ radius = 14.0357
 
 [node name="Stove" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
 script = ExtResource("1_dvufg")
-onEndStatConsumed = Array[Resource]([null])
+onEndStatConsumed = Array[Resource]([ExtResource("3_krnil"), ExtResource("3_q71fe"), ExtResource("4_4v10c"), ExtResource("5_s8ake")])
+onEndStatConsumedAmount = Array[float]([1.0, -6.0, -18.0, -12.0])
+statsConsumed = Array[Resource]([])
+rateConsumed = Array[Resource]([])
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
-attribute = ExtResource("6_711h8")
-errand = ExtResource("7_eqf77")
+attribute = ExtResource("6_02qk3")
 levelDownTimer = NodePath("Timer")
 
 [node name="ZoneArea" type="Area2D" parent="."]
