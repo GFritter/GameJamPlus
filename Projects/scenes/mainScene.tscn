@@ -12,13 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://chpt7ar0o68px" path="res://objects/loadables/iLoadableOnEnd.tscn" id="9_krktt"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="10_626jx"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="11_7g5ay"]
-[ext_resource type="PackedScene" uid="uid://dknjoa2q8vx7" path="res://scenes/NewUI.tscn" id="11_15qmc"]
 [ext_resource type="PackedScene" uid="uid://b2v1p2nkkjc1d" path="res://objects/loadables/dishWorkstation.tscn" id="11_njlc6"]
 [ext_resource type="PackedScene" uid="uid://bhnqsq4p5ct0i" path="res://objects/loadables/stoveWorkstation.tscn" id="12_en6aa"]
 [ext_resource type="Resource" uid="uid://bhij6ooh3p8gy" path="res://resources/attributes/buyFoodRate.tres" id="13_gby5i"]
 [ext_resource type="Resource" uid="uid://cnkyhgwxt625q" path="res://resources/attributes/dishRate.tres" id="15_4hrep"]
 [ext_resource type="Resource" uid="uid://ckwwfvsslv4ld" path="res://resources/attributes/cookRate.tres" id="17_rvoay"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh3qq"]
 texture = ExtResource("1_jwboi")
@@ -42,11 +40,9 @@ layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609,
 [node name="PlayerController" parent="." instance=ExtResource("2_porv7")]
 position = Vector2(158, 168)
 
-
 [node name="baseLoadable" parent="." instance=ExtResource("3_ivaxp")]
 position = Vector2(420, 583)
 decayRate = 1.0
-
 
 [node name="pcWorkstation" parent="." instance=ExtResource("5_kbgu0")]
 position = Vector2(52, 87)
@@ -75,7 +71,6 @@ rateConsumed = Array[Resource]([])
 maxValue = 100.0
 increment = 1.0
 attribute = ExtResource("13_gby5i")
-
 
 [node name="Dish" parent="." instance=ExtResource("11_njlc6")]
 position = Vector2(838, 595)

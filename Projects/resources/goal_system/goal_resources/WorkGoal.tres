@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ded1pi1ebcqod"]
+
+[ext_resource type="Script" path="res://resources/goal_system/GoalResource.cs" id="1_v73yb"]
+
+[resource]
+script = ExtResource("1_v73yb")
+name = ""
+value = 0

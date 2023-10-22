@@ -27,6 +27,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 	{
 		EndConsume();
 		EmitSignal("onComplete");
+		managedResource.AddAmount(1);
 		Reset();
 	}
 
