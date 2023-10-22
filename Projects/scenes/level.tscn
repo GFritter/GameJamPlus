@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbsripy56erc3"]
+[gd_scene load_steps=12 format=3 uid="uid://bbsripy56erc3"]
 
 [ext_resource type="PackedScene" uid="uid://l5oxr6ieqa1j" path="res://objects/loadables/furniture/dish.tscn" id="1_hsx2b"]
 [ext_resource type="Texture2D" uid="uid://b806le0r4bvkt" path="res://art/PIso1.png" id="1_rh2np"]
 [ext_resource type="PackedScene" uid="uid://ckpuifjtupc4p" path="res://objects/loadables/furniture/work.tscn" id="2_pi0tu"]
 [ext_resource type="PackedScene" uid="uid://cbgvjdesbaqm2" path="res://objects/player/player.tscn" id="3_etbv1"]
 [ext_resource type="PackedScene" uid="uid://tcu5qlgcj5a0" path="res://scenes/UI.tscn" id="4_0wgax"]
+[ext_resource type="PackedScene" uid="uid://cskux0wlu085s" path="res://objects/loadables/furniture/fridge.tscn" id="6_e887u"]
+[ext_resource type="PackedScene" uid="uid://bqpg6nhbtkg0c" path="res://objects/loadables/furniture/garden.tscn" id="7_gl2fg"]
+[ext_resource type="PackedScene" uid="uid://csqugoxtv4eu6" path="res://objects/loadables/furniture/sofa.tscn" id="8_x48ki"]
+[ext_resource type="PackedScene" uid="uid://d0gw8kri1y3uy" path="res://objects/loadables/furniture/stove.tscn" id="9_f80hg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq1ss"]
 texture = ExtResource("1_rh2np")
@@ -27,6 +31,22 @@ position = Vector2(105, 164)
 [node name="Work" parent="." instance=ExtResource("2_pi0tu")]
 position = Vector2(105, 281)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_0wgax")]
+
+[node name="Fridge" parent="." instance=ExtResource("6_e887u")]
+position = Vector2(143, 155)
+
+[node name="Garden" parent="." instance=ExtResource("7_gl2fg")]
+position = Vector2(299, 182)
+
+[node name="Sofa" parent="." instance=ExtResource("8_x48ki")]
+position = Vector2(104, 226)
+
+[node name="Stove" parent="." instance=ExtResource("9_f80hg")]
+position = Vector2(172, 161)
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_etbv1")]
 position = Vector2(144, 205)
 
@@ -35,7 +55,3 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource("4_0wgax")]
