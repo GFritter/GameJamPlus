@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2v1p2nkkjc1d"]
+[gd_scene load_steps=10 format=3 uid="uid://dujhbgus5dddt"]
 
 [ext_resource type="PackedScene" uid="uid://cgkrh524f6phj" path="res://objects/loadables/workstation.tscn" id="1_v384p"]
 [ext_resource type="Script" path="res://objects/loadables/iLoadableOnEnd.cs" id="2_ulr7y"]
@@ -6,6 +6,9 @@
 [ext_resource type="Resource" uid="uid://mabiv0jdk8vd" path="res://resources/player_resources/Dish.tres" id="3_gc5ep"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="4_wjyt7"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_ddllq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3enh4"]
+size = Vector2(17, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryiwc"]
 atlas = ExtResource("3_3u6qj")
@@ -28,6 +31,12 @@ onEndStatConsumed = Array[Resource]([ExtResource("3_gc5ep")])
 onEndStatConsumedAmount = Array[float]([1.0])
 statsConsumed = Array[Resource]([ExtResource("4_wjyt7"), ExtResource("5_ddllq")])
 rateConsumed = Array[float]([0.2, 0.2])
+
+[node name="SpriteCollider" type="StaticBody2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteCollider" index="0"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_3enh4")
 
 [node name="AnimatedSprite2D" parent="SpriteCollider" index="1"]
 sprite_frames = SubResource("SpriteFrames_xjp53")

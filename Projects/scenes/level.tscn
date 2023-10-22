@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyeuhmphxf1b5"]
+
+[ext_resource type="PackedScene" uid="uid://216asl1m8kav" path="res://objects/player/PlayerController.tscn" id="1_41oxb"]
+
+[sub_resource type="TileSet" id="TileSet_qwwog"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_qwwog")
+format = 2
+
+[node name="PlayerController" parent="." instance=ExtResource("1_41oxb")]
+position = Vector2(105, 75)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerController"]
+position = Vector2(-105, -75)
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
