@@ -26,6 +26,9 @@ public partial class iLoadable : Node2D
 	[Signal]
 	public delegate void onCompleteEventHandler();
 
+	[Export]
+	public Attribute attribute;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -62,7 +65,7 @@ public partial class iLoadable : Node2D
 	protected void AddProgress(float value)
 	{
 		
-		currentValue +=increment+value;
+		currentValue +=(attribute.flatRate+value)*attribute.modifier;
 		
 		if(currentValue>=maxValue)
 		{
@@ -74,7 +77,7 @@ public partial class iLoadable : Node2D
 	protected void AddProgress()
 	{
 		
-		currentValue+=increment;
+		currentValue+=attribute.flatRate*attribute.modifier;
 
 		if(currentValue>=maxValue)
 		{
