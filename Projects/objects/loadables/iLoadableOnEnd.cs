@@ -38,7 +38,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 
 		for(int i =0;i<statsConsumed.Count;++i)
 		{
-			if(statsConsumed[i].currentValue - rateConsumed[i] <= statsConsumed[i].minValue)
+			if(statsConsumed[i].currentValue - rateConsumed[i] < statsConsumed[i].minValue)
 			{
 				valid=false;
 			}
@@ -47,7 +47,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 
 		for(int j=0;j<onEndStatConsumed.Count;++j)
 		{
-			if(onEndStatConsumed[j].currentValue - onEndStatConsumedAmount[j] <= onEndStatConsumed[j].minValue)
+			if(onEndStatConsumed[j].currentValue - onEndStatConsumedAmount[j] < onEndStatConsumed[j].minValue)
 			{
 				valid = false;
 			}

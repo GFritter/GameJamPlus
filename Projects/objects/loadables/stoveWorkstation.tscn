@@ -1,0 +1,35 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhnqsq4p5ct0i"]
+
+[ext_resource type="PackedScene" uid="uid://cgkrh524f6phj" path="res://objects/loadables/workstation.tscn" id="1_bhroc"]
+[ext_resource type="Script" path="res://objects/loadables/iLoadableOnEnd.cs" id="2_46vr6"]
+[ext_resource type="Resource" uid="uid://mabiv0jdk8vd" path="res://resources/player_resources/Dish.tres" id="3_8xdj6"]
+[ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="4_fbqm5"]
+[ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="4_s6yh5"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="5_1euas"]
+[ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_mt2ys"]
+[ext_resource type="Texture2D" uid="uid://cl601r140uvpl" path="res://art/roguelikeIndoor_transparent.png" id="6_beoor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj43m"]
+atlas = ExtResource("6_beoor")
+region = Rect2(238, 238, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjp53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj43m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baseLoadable" instance=ExtResource("1_bhroc")]
+script = ExtResource("2_46vr6")
+onEndStatConsumed = Array[Resource]([ExtResource("3_8xdj6"), ExtResource("4_fbqm5"), ExtResource("5_1euas"), ExtResource("5_mt2ys"), ExtResource("4_s6yh5")])
+onEndStatConsumedAmount = Array[float]([-1.0, 1.0, -50.0, -40.0, -20.0])
+statsConsumed = Array[Resource]([ExtResource("4_s6yh5"), ExtResource("5_mt2ys")])
+rateConsumed = Array[float]([0.2, 0.2])
+
+[node name="AnimatedSprite2D" parent="SpriteCollider" index="1"]
+sprite_frames = SubResource("SpriteFrames_xjp53")
