@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=14 format=3 uid="uid://dknjoa2q8vx7"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://drobcubsr0fw1"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scenes/UIManager.cs" id="1_w3i8h"]
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="2_anu52"]
@@ -6,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_hole5"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="5_86ayl"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="6_03vnp"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://cpg3nf5237lkt" path="res://art/icons/radialBackgroun.png" id="7_nfxwc"]
 [ext_resource type="Texture2D" uid="uid://bohmer2llkp4c" path="res://art/icons/radialProgress.png" id="8_ejmyl"]
 [ext_resource type="Texture2D" uid="uid://chob7vpc1qdbh" path="res://art/icons/foodIcon.png" id="9_wmno3"]
@@ -13,6 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://ch5l4q2xi8t3t" path="res://art/icons/brawnIcon.png" id="11_l51p4"]
 [ext_resource type="Texture2D" uid="uid://dfha18j1a1f6m" path="res://art/icons/ChoppCoin.png" id="12_ckjsx"]
 [ext_resource type="Texture2D" uid="uid://qw3dml52eers" path="res://art/icons/foodStatIcon.png" id="13_3hpaa"]
+=======
+[ext_resource type="Texture2D" path="res://art/icons/radialBackgroun.png" id="7_nfxwc"]
+[ext_resource type="Texture2D" path="res://art/icons/radialProgress.png" id="8_ejmyl"]
+[ext_resource type="Texture2D" path="res://art/icons/foodIcon.png" id="9_wmno3"]
+[ext_resource type="Texture2D" path="res://art/icons/brainIcon.png" id="10_gui08"]
+[ext_resource type="Texture2D" path="res://art/icons/brawnIcon.png" id="11_l51p4"]
+[ext_resource type="Texture2D" path="res://art/icons/ChoppCoin.png" id="12_ckjsx"]
+[ext_resource type="Texture2D" path="res://art/icons/foodStatIcon.png" id="13_3hpaa"]
+>>>>>>> Stashed changes
 
 [node name="UI" type="Control" node_paths=PackedStringArray("hungerBar", "brainBar", "brawnBar", "moneyCount", "foodCount")]
 layout_mode = 3

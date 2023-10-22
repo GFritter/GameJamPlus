@@ -4,8 +4,13 @@
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="2_tlxni"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_hb4jf"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_36gq2"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://deeebks6nijl0" path="res://art/player/player_idle_1.png" id="5_tj4ec"]
 [ext_resource type="Texture2D" uid="uid://biy7u34qlmsks" path="res://art/player/player_walk.png" id="6_bo23d"]
+=======
+[ext_resource type="Texture2D" path="res://art/player/player_idle_1.png" id="5_tj4ec"]
+[ext_resource type="Texture2D" path="res://art/player/player_walk.png" id="6_bo23d"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8m2a"]
 size = Vector2(32, 32)
