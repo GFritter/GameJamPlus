@@ -41,6 +41,7 @@ public partial class UIManager : Control
 
 		brawnBar.MinValue = brawnStat.minValue;
 		brawnBar.MaxValue =brawnStat.maxValue;
+		brawnBar.Value = brawnStat.currentValue;
 		brawnStat.OnUpdate+=UpdateBrawnBar;
 
 	}

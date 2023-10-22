@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="GameJamPlusProto1"
-run/main_scene="res://scenes/mainScene.tscn"
+run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 

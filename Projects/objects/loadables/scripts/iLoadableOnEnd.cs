@@ -29,19 +29,18 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 		EmitSignal("onComplete");
 		managedResource.AddAmount(1);
 		Reset();
-
-
 	}
 
-	protected override bool CheckValid()
+	protected override bool CheckValid(float delta)
 	{
 		bool valid = true;
 
 		for(int i =0;i<statsConsumed.Count;++i)
 		{
-			if(statsConsumed[i].currentValue - rateConsumed[i] < statsConsumed[i].minValue)
+			if(statsConsumed[i].currentValue - rateConsumed[i] * delta < statsConsumed[i].minValue)
 			{
 				valid=false;
+				GD.Print("Is not valid consumed");
 			}
 
 		}
@@ -51,6 +50,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 			if(onEndStatConsumed[j].currentValue - onEndStatConsumedAmount[j] < onEndStatConsumed[j].minValue)
 			{
 				valid = false;
+				GD.Print("Is not valid consumed end");
 			}
 		}
 

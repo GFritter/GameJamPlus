@@ -7,23 +7,17 @@ public partial class PlayerController : CharacterBody2D
 	[Export]
 	public const float Speed = 300.0f;
 	
-	[Export]
-	Array<Stat> stats;
+	AnimationPlayer animationPlayer;
+	Sprite2D playerSprite;
 
-	//maybe have those as stats and each thing selects what it increments with (opens possibility for more than one etc)
-	[Export]
-	public float workIncrement,plantIncrement,cookIncrement,dishIncrement;
-
-	[Export]
-	public int eatingBrainRecovery,eatingBrawnRecovery,eatingHungerRecovery;
-
-
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+        animationPlayer = (AnimationPlayer)FindChild("AnimationPlayer");
+		playerSprite = (Sprite2D)FindChild("Sprite");
+    }
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-
-		
-
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -39,6 +33,18 @@ public partial class PlayerController : CharacterBody2D
 		}
 
 		Velocity = velocity;
+		if(direction == Vector2.Zero){
+			animationPlayer.Play("idle");
+		}
+		else{
+			if(direction.X < 0){
+				playerSprite.Scale = new Vector2(-1, 1);
+			}
+			else if(direction.X > 0){
+				playerSprite.Scale = new Vector2(1, 1);
+			}
+			animationPlayer.Play("walk");
+		}
 		MoveAndSlide();
 	}
 }
