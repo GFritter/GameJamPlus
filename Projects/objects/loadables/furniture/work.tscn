@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckpuifjtupc4p"]
+[gd_scene load_steps=14 format=3 uid="uid://ckpuifjtupc4p"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_yhofc"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="2_7pjsy"]
@@ -6,43 +6,57 @@
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="3_ftdxf"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_6jo6l"]
 [ext_resource type="Resource" uid="uid://b04sibqlcxnyc" path="res://resources/attributes/workRate.tres" id="6_fi0t4"]
-[ext_resource type="Resource" uid="uid://cb2ru201h7pv4" path="res://resources/errands/WorkErrand.tres" id="7_2vlli"]
+[ext_resource type="PackedScene" uid="uid://c82g8s4aw0fnt" path="res://particles/minus_brain.tscn" id="7_r305x"]
 [ext_resource type="Texture2D" uid="uid://c013tukf7l5xu" path="res://art/furniture/trabalho.png" id="8_ghrs8"]
+[ext_resource type="AudioStream" uid="uid://enl6m1jjxboe" path="res://sounds/keyboard.wav" id="8_y1cju"]
+[ext_resource type="PackedScene" uid="uid://dk17e4t53xh7p" path="res://particles/minus_energy.tscn" id="8_ylqu7"]
+[ext_resource type="PackedScene" uid="uid://75kt354qa8cy" path="res://particles/minus_food.tscn" id="9_h7x1d"]
+[ext_resource type="PackedScene" uid="uid://bho7oocrv1vix" path="res://particles/plus_money.tscn" id="10_i622f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
-radius = 14.0357
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37kee"]
+size = Vector2(43, 14)
 
-[node name="Work" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Work" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_yhofc")
 onEndStatConsumed = Array[Resource]([ExtResource("2_7pjsy")])
 onEndStatConsumedAmount = Array[float]([-25.0])
 statsConsumed = Array[Resource]([ExtResource("2_uvjhd"), ExtResource("3_ftdxf"), ExtResource("4_6jo6l")])
-rateConsumed = Array[float]([1.8, 0.6, 2.4])
+rateConsumed = Array[float]([2.4, 0.6, 1.8])
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
-maxValue = 100.0
+maxValue = 15.0
+decayPerSecond = 0.1
 attribute = ExtResource("6_fi0t4")
-errand = ExtResource("7_2vlli")
-levelDownTimer = NodePath("Timer")
+playOnProcess = NodePath("PlayOnProcess")
+playOnEnd = NodePath("PlayOnEnd")
+particlesOnProcess = Array[PackedScene]([ExtResource("7_r305x"), ExtResource("8_ylqu7"), ExtResource("9_h7x1d")])
+particlesOnEnd = Array[PackedScene]([ExtResource("10_i622f")])
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneArea"]
-shape = SubResource("CircleShape2D_4g8ft")
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_37kee")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -32.0
-offset_top = -15.0
+offset_top = 8.0
 offset_right = 32.0
-offset_bottom = -10.0
+offset_bottom = 13.0
 value = 0.17
 show_percentage = false
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture = ExtResource("8_ghrs8")
+
+[node name="PlayOnProcess" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_y1cju")
+volume_db = 1.0
+
+[node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

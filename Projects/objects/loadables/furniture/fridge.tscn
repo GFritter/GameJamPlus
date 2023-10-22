@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cskux0wlu085s"]
+[gd_scene load_steps=9 format=3 uid="uid://cskux0wlu085s"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_fxywg"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="2_csgss"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="3_10bpd"]
 [ext_resource type="Resource" uid="uid://bhij6ooh3p8gy" path="res://resources/attributes/buyFoodRate.tres" id="4_wngce"]
+[ext_resource type="PackedScene" uid="uid://dh321b7mlu8ak" path="res://particles/minus_money.tscn" id="5_avant"]
+[ext_resource type="PackedScene" uid="uid://ce1mef6ftp4ok" path="res://particles/plus_meal.tscn" id="6_ksrxb"]
 [ext_resource type="Texture2D" uid="uid://de07gchvs70ir" path="res://art/furniture/geladeita.png" id="7_8rkkh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
-radius = 14.0357
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry1im"]
+size = Vector2(20, 16)
 
-[node name="Fridge" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Fridge" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_fxywg")
 onEndStatConsumed = Array[Resource]([ExtResource("2_csgss"), ExtResource("3_10bpd")])
 onEndStatConsumedAmount = Array[float]([-1.0, 15.0])
@@ -17,15 +19,20 @@ statsConsumed = Array[Resource]([])
 rateConsumed = Array[Resource]([])
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
-maxValue = 100.0
+maxValue = 7.5
+decayPerSecond = 0.1
 attribute = ExtResource("4_wngce")
-levelDownTimer = NodePath("Timer")
+playOnProcess = NodePath("PlayOnProcess")
+playOnEnd = NodePath("PlayOnEnd")
+particlesOnProcess = Array[Resource]([])
+particlesOnEnd = Array[PackedScene]([ExtResource("5_avant"), ExtResource("6_ksrxb")])
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneArea"]
-shape = SubResource("CircleShape2D_4g8ft")
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ry1im")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -39,6 +46,11 @@ show_percentage = false
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture = ExtResource("7_8rkkh")
+
+[node name="PlayOnProcess" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

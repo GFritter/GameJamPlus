@@ -52,6 +52,7 @@ layout_mode = 2
 [node name="DayNight" parent="MarginContainer/VBoxContainer" instance=ExtResource("7_0q6fw")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+minutesPerDay = 2.0
 
 [node name="MoneyInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -92,12 +93,14 @@ texture_progress = ExtResource("11_aj7w7")
 
 [node name="MindBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+fill_mode = 4
 texture_under = ExtResource("9_eunj7")
 texture_over = ExtResource("12_n33kk")
 texture_progress = ExtResource("11_aj7w7")
 
 [node name="HungerBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+fill_mode = 4
 texture_under = ExtResource("9_eunj7")
 texture_over = ExtResource("13_25afu")
 texture_progress = ExtResource("11_aj7w7")

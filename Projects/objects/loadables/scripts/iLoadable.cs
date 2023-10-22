@@ -27,6 +27,23 @@ public partial class iLoadable : Node2D
 	[Export]
 	public Attribute attribute;
 
+	[Export]
+	public AudioStreamPlayer2D playOnProcess;
+	[Export]
+	public AudioStreamPlayer2D playOnEnd;
+	[Export] public PackedScene[] particlesOnProcess;
+	[Export] public PackedScene[] particlesOnEnd;
+
+    public virtual void Spawn(PackedScene[] particlesToSpawn)
+    {
+        if(particlesToSpawn != null){
+			foreach(PackedScene particle in particlesToSpawn){
+				ParticleSpawner newParticle = (ParticleSpawner)particle.Instantiate();
+				GetTree().CurrentScene.AddChild(newParticle);
+				newParticle.GlobalPosition = GlobalPosition;
+			}
+		}
+    }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,6 +56,7 @@ public partial class iLoadable : Node2D
 		if(active && currentValue<maxValue)
 		{
 			AddProgress((float)delta);
+			
 		}
 
 		if(currentValue>minValue)
@@ -65,7 +83,12 @@ public partial class iLoadable : Node2D
 		{
 			OnComplete();
 		}
-		
+		if(currentValue % (maxValue / 10) <= 0.05){
+			Spawn(particlesOnProcess);
+		}
+		if(playOnProcess != null && !playOnProcess.Playing){
+				playOnProcess.Play();
+		}
 	}
 
 	protected void AddProgress()
@@ -77,7 +100,9 @@ public partial class iLoadable : Node2D
 		{
 			OnComplete();
 		}
-		
+		if(currentValue % (maxValue / 10) <= 0.1){
+			Spawn(particlesOnProcess);
+		}
 	}
 
 	protected void UpdateBar()
@@ -87,6 +112,8 @@ public partial class iLoadable : Node2D
 
 	protected virtual void OnComplete()
 	{
+		if(playOnEnd != null) playOnEnd.Play();
+		Spawn(particlesOnEnd);
 		EmitSignal("onComplete");
 		Reset();
 	}
@@ -111,9 +138,8 @@ public partial class iLoadable : Node2D
 		{
 			GD.Print("O mano parente entrou");
 			active=true;
+			
 		}
-
-
 	}
 
 	public void TestAreaExit(Node2D body)
@@ -124,6 +150,9 @@ public partial class iLoadable : Node2D
 		{
 			GD.Print("O mano saiu");
 			active=false;
+			if(playOnProcess != null && playOnProcess.Playing){
+				playOnProcess.Stop();
+			}
 		}
 
 	}

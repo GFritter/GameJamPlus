@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://csqugoxtv4eu6"]
+[gd_scene load_steps=10 format=3 uid="uid://csqugoxtv4eu6"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_mkeof"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_ykp48"]
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="4_sv4er"]
 [ext_resource type="Resource" uid="uid://h2ny1bcgerhf" path="res://resources/attributes/napRate.tres" id="5_gqqgj"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_hef58"]
-[ext_resource type="Texture2D" uid="uid://c013tukf7l5xu" path="res://art/furniture/trabalho.png" id="8_p1l4i"]
+[ext_resource type="Texture2D" uid="uid://damf6tstyhd71" path="res://art/furniture/Sofá.png" id="6_3x2mb"]
+[ext_resource type="PackedScene" uid="uid://cwe3u2n3gngv3" path="res://particles/plus_energy.tscn" id="6_5oo6x"]
+[ext_resource type="PackedScene" uid="uid://d0fgnm2ex1yij" path="res://particles/plus_brain.tscn" id="7_j1iva"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
-radius = 14.0357
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy5px"]
+size = Vector2(35, 12)
 
-[node name="Sofa" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Sofa" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_mkeof")
 onEndStatConsumed = Array[Resource]([ExtResource("3_ykp48"), ExtResource("5_hef58")])
 onEndStatConsumedAmount = Array[float]([-6.0, -12.0])
@@ -18,15 +20,20 @@ statsConsumed = Array[Resource]([ExtResource("4_sv4er")])
 rateConsumed = Array[float]([0.6])
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
-maxValue = 100.0
+maxValue = 5.0
+decayPerSecond = 0.3
 attribute = ExtResource("5_gqqgj")
-levelDownTimer = NodePath("Timer")
+playOnProcess = NodePath("PlayOnProcess")
+playOnEnd = NodePath("PlayOnEnd")
+particlesOnProcess = Array[PackedScene]([])
+particlesOnEnd = Array[PackedScene]([ExtResource("6_5oo6x"), ExtResource("7_j1iva")])
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneArea"]
-shape = SubResource("CircleShape2D_4g8ft")
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_uy5px")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -39,7 +46,11 @@ value = 0.17
 show_percentage = false
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
-texture = ExtResource("8_p1l4i")
+texture = ExtResource("6_3x2mb")
+
+[node name="PlayOnProcess" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

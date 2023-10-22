@@ -26,8 +26,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 	protected override void OnComplete()
 	{
 		EndConsume();
-		EmitSignal("onComplete");
-		Reset();
+		base.OnComplete();
 	}
 
 	protected override bool CheckValid(float delta)

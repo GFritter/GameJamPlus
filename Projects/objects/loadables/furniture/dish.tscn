@@ -1,17 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://l5oxr6ieqa1j"]
+[gd_scene load_steps=17 format=3 uid="uid://l5oxr6ieqa1j"]
 
-[ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableConsumer.cs" id="1_2skyq"]
+[ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_71ng1"]
 [ext_resource type="Texture2D" uid="uid://djpehuqk3iglh" path="res://art/furniture/pia suja.png" id="2_68s5l"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="2_aafiu"]
-[ext_resource type="Resource" uid="uid://cnkyhgwxt625q" path="res://resources/attributes/dishRate.tres" id="2_xyoib"]
+[ext_resource type="Resource" uid="uid://dr3x5e8hrakh5" path="res://resources/player_resources/Dish.tres" id="2_f7m22"]
 [ext_resource type="Texture2D" uid="uid://bqc5r8gp4yv0y" path="res://art/furniture/Pia.png" id="3_kmwx7"]
-[ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="3_pt52s"]
+[ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="4_nesxx"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_nu18a"]
-[ext_resource type="Resource" uid="uid://ddt2v7snrpisa" path="res://resources/errands/DishErrand.tres" id="6_gusdh"]
+[ext_resource type="Resource" uid="uid://cnkyhgwxt625q" path="res://resources/attributes/dishRate.tres" id="6_0w8qu"]
+[ext_resource type="PackedScene" uid="uid://c82g8s4aw0fnt" path="res://particles/minus_brain.tscn" id="6_ab2lo"]
+[ext_resource type="PackedScene" uid="uid://dk17e4t53xh7p" path="res://particles/minus_energy.tscn" id="7_q36s2"]
 [ext_resource type="Script" path="res://objects/loadables/AttributeAnimation.cs" id="9_x3otp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
-radius = 20.025
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovryv"]
+size = Vector2(24, 10)
 
 [sub_resource type="Animation" id="Animation_pqbfr"]
 resource_name = "Level0"
@@ -66,22 +68,27 @@ _data = {
 "RESET": SubResource("Animation_60smc")
 }
 
-[node name="Dish" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
-script = ExtResource("1_2skyq")
-statsConsumed = Array[Resource]([ExtResource("2_aafiu"), ExtResource("3_pt52s"), ExtResource("4_nu18a")])
-rateConsumed = Array[float]([12.0, 6.0, 12.0])
+[node name="Dish" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
+script = ExtResource("1_71ng1")
+onEndStatConsumed = Array[Resource]([ExtResource("2_f7m22")])
+onEndStatConsumedAmount = Array[float]([1.0])
+statsConsumed = Array[Resource]([ExtResource("2_aafiu"), ExtResource("4_nesxx"), ExtResource("4_nu18a")])
+rateConsumed = Array[float]([1.5, 0.0, 1.0])
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
-maxValue = 100.0
-attribute = ExtResource("2_xyoib")
-errand = ExtResource("6_gusdh")
-levelDownTimer = NodePath("Timer")
+maxValue = 7.5
+decayPerSecond = 0.1
+attribute = ExtResource("6_0w8qu")
+playOnProcess = NodePath("AudioStreamProcessing")
+playOnEnd = NodePath("AudioStreamEnded")
+particlesOnProcess = Array[PackedScene]([ExtResource("6_ab2lo"), ExtResource("7_q36s2")])
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneArea"]
-shape = SubResource("CircleShape2D_4g8ft")
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_ovryv")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -101,6 +108,10 @@ libraries = {
 "": SubResource("AnimationLibrary_hnjty")
 }
 script = ExtResource("9_x3otp")
+
+[node name="AudioStreamProcessing" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamEnded" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]
