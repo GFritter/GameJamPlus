@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bybbhu84r36bl"]
+
+[ext_resource type="Resource" uid="uid://b1vk1aw3acogd" path="res://resources/goal_system/goals/work3times.tres" id="1_payyh"]
+[ext_resource type="Script" path="res://resources/goal_system/GoalList.cs" id="2_nuxld"]
+
+[resource]
+script = ExtResource("2_nuxld")
+goals = Array[Resource]([ExtResource("1_payyh")])
