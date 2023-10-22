@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cskux0wlu085s"]
+[gd_scene load_steps=7 format=3 uid="uid://dlvm3mpdp4yjy"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_fxywg"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="2_csgss"]
@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
 radius = 14.0357
 
-[node name="Fridge" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Fridge" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar")]
 script = ExtResource("1_fxywg")
 onEndStatConsumed = Array[Resource]([ExtResource("2_csgss"), ExtResource("3_10bpd")])
 onEndStatConsumedAmount = Array[float]([-1.0, 15.0])
@@ -19,7 +19,6 @@ zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
 attribute = ExtResource("4_wngce")
-levelDownTimer = NodePath("Timer")
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 13)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxali2vk1yn7u"]
+
+[ext_resource type="Script" path="res://resources/goal_system/GoalManager.cs" id="1_j5i8m"]
+[ext_resource type="Resource" uid="uid://bybbhu84r36bl" path="res://resources/goal_system/goal_lists/Day1Goals.tres" id="2_k0cwq"]
+[ext_resource type="PackedScene" uid="uid://dlkgq5yobuumo" path="res://resources/goal_system/goalUITemplate.tscn" id="3_yd2xc"]
+
+[node name="GoalManager" type="Control" node_paths=PackedStringArray("listContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5i8m")
+dailyGoals = Array[Resource]([ExtResource("2_k0cwq")])
+goalUITemplate = ExtResource("3_yd2xc")
+listContainer = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 60)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

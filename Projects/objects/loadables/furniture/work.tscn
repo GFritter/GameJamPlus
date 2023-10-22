@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckpuifjtupc4p"]
+[gd_scene load_steps=9 format=3 uid="uid://ckpuifjtupc4p"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_yhofc"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="2_7pjsy"]
@@ -6,13 +6,12 @@
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="3_ftdxf"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_6jo6l"]
 [ext_resource type="Resource" uid="uid://b04sibqlcxnyc" path="res://resources/attributes/workRate.tres" id="6_fi0t4"]
-[ext_resource type="Resource" uid="uid://cb2ru201h7pv4" path="res://resources/errands/WorkErrand.tres" id="7_2vlli"]
 [ext_resource type="Texture2D" uid="uid://c013tukf7l5xu" path="res://art/furniture/trabalho.png" id="8_ghrs8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
 radius = 14.0357
 
-[node name="Work" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Work" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar")]
 script = ExtResource("1_yhofc")
 onEndStatConsumed = Array[Resource]([ExtResource("2_7pjsy")])
 onEndStatConsumedAmount = Array[float]([-25.0])
@@ -22,8 +21,6 @@ zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
 attribute = ExtResource("6_fi0t4")
-errand = ExtResource("7_2vlli")
-levelDownTimer = NodePath("Timer")
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, -7)

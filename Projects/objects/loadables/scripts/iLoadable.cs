@@ -92,6 +92,7 @@ public partial class iLoadable : Node2D
 	{
 
 		EmitSignal("onComplete");
+		managedResource.AddAmount(1);
 		Reset();
 	}
 	protected virtual void OnEmpty(){

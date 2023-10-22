@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbsripy56erc3"]
+[gd_scene load_steps=15 format=3 uid="uid://bbsripy56erc3"]
 
 [ext_resource type="PackedScene" uid="uid://l5oxr6ieqa1j" path="res://objects/loadables/furniture/dish.tscn" id="1_hsx2b"]
 [ext_resource type="Texture2D" uid="uid://b806le0r4bvkt" path="res://art/PIso1.png" id="1_rh2np"]
 [ext_resource type="PackedScene" uid="uid://ckpuifjtupc4p" path="res://objects/loadables/furniture/work.tscn" id="2_pi0tu"]
 [ext_resource type="PackedScene" uid="uid://cbgvjdesbaqm2" path="res://objects/player/player.tscn" id="3_etbv1"]
+[ext_resource type="Resource" uid="uid://checwf8lbb4qm" path="res://resources/attributes/welfare.tres" id="3_o5yfg"]
 [ext_resource type="PackedScene" uid="uid://tcu5qlgcj5a0" path="res://scenes/UI.tscn" id="4_0wgax"]
-[ext_resource type="PackedScene" uid="uid://cskux0wlu085s" path="res://objects/loadables/furniture/fridge.tscn" id="6_e887u"]
-[ext_resource type="PackedScene" uid="uid://bqpg6nhbtkg0c" path="res://objects/loadables/furniture/garden.tscn" id="7_gl2fg"]
-[ext_resource type="PackedScene" uid="uid://csqugoxtv4eu6" path="res://objects/loadables/furniture/sofa.tscn" id="8_x48ki"]
+[ext_resource type="Resource" uid="uid://dnf1s5bq5qylf" path="res://resources/goal_system/goal_resources/DishGoal.tres" id="4_ehqay"]
+[ext_resource type="PackedScene" uid="uid://dlvm3mpdp4yjy" path="res://objects/loadables/furniture/fridge.tscn" id="6_e887u"]
+[ext_resource type="PackedScene" uid="uid://i4xiuy68ks2w" path="res://objects/loadables/furniture/garden.tscn" id="7_gl2fg"]
+[ext_resource type="PackedScene" uid="uid://qp4l8uhqbtpb" path="res://objects/loadables/furniture/sofa.tscn" id="8_x48ki"]
 [ext_resource type="PackedScene" uid="uid://d0gw8kri1y3uy" path="res://objects/loadables/furniture/stove.tscn" id="9_f80hg"]
+[ext_resource type="Resource" uid="uid://j26e3kpclu5e" path="res://resources/goal_system/goal_resources/PlantGoal.tres" id="9_iodnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq1ss"]
 texture = ExtResource("1_rh2np")
@@ -27,9 +30,12 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 65536, 0, 131072, 0, 0, 196
 
 [node name="Dish" parent="." instance=ExtResource("1_hsx2b")]
 position = Vector2(105, 164)
+welfare = ExtResource("3_o5yfg")
+managedResource = ExtResource("4_ehqay")
 
 [node name="Work" parent="." instance=ExtResource("2_pi0tu")]
 position = Vector2(105, 281)
+welfare = ExtResource("3_o5yfg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -37,15 +43,20 @@ position = Vector2(105, 281)
 
 [node name="Fridge" parent="." instance=ExtResource("6_e887u")]
 position = Vector2(143, 155)
+welfare = ExtResource("3_o5yfg")
 
 [node name="Garden" parent="." instance=ExtResource("7_gl2fg")]
 position = Vector2(299, 182)
+welfare = ExtResource("3_o5yfg")
+managedResource = ExtResource("9_iodnk")
 
 [node name="Sofa" parent="." instance=ExtResource("8_x48ki")]
 position = Vector2(104, 226)
+welfare = ExtResource("3_o5yfg")
 
 [node name="Stove" parent="." instance=ExtResource("9_f80hg")]
 position = Vector2(172, 161)
+welfare = ExtResource("3_o5yfg")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_etbv1")]
 position = Vector2(144, 205)

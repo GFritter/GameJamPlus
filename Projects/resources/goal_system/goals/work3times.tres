@@ -1,11 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://b1vk1aw3acogd"]
 
-[ext_resource type="Script" path="res://resources/goal_system/GoalResource.cs" id="1_6ia6g"]
+[ext_resource type="Resource" uid="uid://ded1pi1ebcqod" path="res://resources/goal_system/goal_resources/WorkGoal.tres" id="1_2u4nd"]
 [ext_resource type="Script" path="res://resources/goal_system/Goal.cs" id="2_okcge"]
 
 [resource]
 script = ExtResource("2_okcge")
-goalResource = ExtResource("1_6ia6g")
+goalName = "Regular Day: Work 3 times"
+goalResource = ExtResource("1_2u4nd")
 currentValue = 0
 targetValue = 3
 completed = false

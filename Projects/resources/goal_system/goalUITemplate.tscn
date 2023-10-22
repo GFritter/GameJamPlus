@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlkgq5yobuumo"]
+
+[ext_resource type="Script" path="res://resources/goal_system/GoalUiItem.cs" id="1_vxmbu"]
+
+[node name="goalUITemplate" type="HBoxContainer" node_paths=PackedStringArray("image", "name", "current", "target")]
+custom_minimum_size = Vector2(500, 32)
+script = ExtResource("1_vxmbu")
+image = NodePath("TextureRect")
+name = NodePath("Goal Name")
+current = NodePath("Current")
+target = NodePath("Target")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Goal Name" type="Label" parent="."]
+layout_mode = 2
+text = "Go And Do Some Stuff Man"
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="Target" type="Label" parent="."]
+layout_mode = 2
+text = "/0"
+vertical_alignment = 1

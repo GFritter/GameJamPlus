@@ -7,4 +7,7 @@ using System.Collections.Generic;
 public partial class GoalList : Resource
 {
 	[Export] public Array<Goal> goals;
+
+
+	
 }

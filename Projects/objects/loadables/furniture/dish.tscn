@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l5oxr6ieqa1j"]
+[gd_scene load_steps=14 format=3 uid="uid://l5oxr6ieqa1j"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableConsumer.cs" id="1_2skyq"]
 [ext_resource type="Texture2D" uid="uid://djpehuqk3iglh" path="res://art/furniture/pia suja.png" id="2_68s5l"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bqc5r8gp4yv0y" path="res://art/furniture/Pia.png" id="3_kmwx7"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="3_pt52s"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="4_nu18a"]
-[ext_resource type="Resource" uid="uid://ddt2v7snrpisa" path="res://resources/errands/DishErrand.tres" id="6_gusdh"]
 [ext_resource type="Script" path="res://objects/loadables/AttributeAnimation.cs" id="9_x3otp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
@@ -66,7 +65,7 @@ _data = {
 "RESET": SubResource("Animation_60smc")
 }
 
-[node name="Dish" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Dish" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar")]
 script = ExtResource("1_2skyq")
 statsConsumed = Array[Resource]([ExtResource("2_aafiu"), ExtResource("3_pt52s"), ExtResource("4_nu18a")])
 rateConsumed = Array[float]([12.0, 6.0, 12.0])
@@ -74,8 +73,6 @@ zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
 attribute = ExtResource("2_xyoib")
-errand = ExtResource("6_gusdh")
-levelDownTimer = NodePath("Timer")
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 6)

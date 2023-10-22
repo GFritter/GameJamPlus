@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
 radius = 14.0357
 
-[node name="Stove" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "levelDownTimer")]
+[node name="Stove" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar")]
 script = ExtResource("1_dvufg")
 onEndStatConsumed = Array[Resource]([ExtResource("3_krnil"), ExtResource("3_q71fe"), ExtResource("4_4v10c"), ExtResource("5_s8ake")])
 onEndStatConsumedAmount = Array[float]([1.0, -6.0, -18.0, -12.0])
@@ -21,7 +21,6 @@ zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
 attribute = ExtResource("6_02qk3")
-levelDownTimer = NodePath("Timer")
 
 [node name="ZoneArea" type="Area2D" parent="."]
 position = Vector2(0, 13)
