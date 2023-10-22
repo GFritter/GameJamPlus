@@ -6,7 +6,7 @@ public partial class UIManager : Control
 {
 
 	[Export]
-	public ProgressBar hungerBar,brainBar,brawnBar;
+	public TextureProgressBar hungerBar,brainBar,brawnBar;
 
 	[Export]
 	Stat hungerStat,brainStat,brawnStat,moneyStat,foodStat;
