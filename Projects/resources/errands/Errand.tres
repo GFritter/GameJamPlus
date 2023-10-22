@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bufad6h1fk0m4"]
+
+[ext_resource type="Script" path="res://resources/errands/Errand.cs" id="1_4506y"]
+
+[resource]
+script = ExtResource("1_4506y")
+minLevel = 0
+currentLevel = 0
+maxLevel = 0
+currentXP = 0
+doesLevelDecay = false
+levelDownTimePerLevel = PackedFloat32Array()
+neededXPPerLevel = PackedInt32Array()

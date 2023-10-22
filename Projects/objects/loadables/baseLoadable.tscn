@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2n4wuf358gvc"]
+[gd_scene load_steps=4 format=3 uid="uid://d2n4wuf358gvc"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadable.cs" id="1_assvm"]
+[ext_resource type="Script" path="res://objects/loadables/AttributeAnimation.cs" id="2_0qerm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
 radius = 20.025
@@ -10,8 +11,6 @@ script = ExtResource("1_assvm")
 zoneArea = NodePath("ZoneArea")
 bar = NodePath("ProgressBar")
 maxValue = 100.0
-decayRate = 0.2
-increment = 3.0
 
 [node name="ZoneArea" type="Area2D" parent="."]
 
@@ -31,6 +30,7 @@ show_percentage = false
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+script = ExtResource("2_0qerm")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]
