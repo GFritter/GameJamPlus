@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_a0ehg")
-name = ""
+name = "plant"
 value = 0

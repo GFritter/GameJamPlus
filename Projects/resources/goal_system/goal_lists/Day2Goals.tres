@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cmy3q0vrq8ykr"]
+
+[ext_resource type="Resource" uid="uid://bnasc4m7jm5qs" path="res://resources/goal_system/goals/day_two/RegularWorkDay.tres" id="1_xuj1d"]
+[ext_resource type="Resource" uid="uid://cbi8j5q2y2b5t" path="res://resources/goal_system/goals/day_two/ExtraHours.tres" id="2_sam5g"]
+[ext_resource type="Resource" uid="uid://7s55mxhodfcd" path="res://resources/goal_system/goals/day_two/PlantLife.tres" id="3_hiywk"]
+[ext_resource type="Script" path="res://resources/goal_system/GoalList.cs" id="4_1pbbl"]
+
+[resource]
+script = ExtResource("4_1pbbl")
+goals = Array[Resource]([ExtResource("1_xuj1d"), ExtResource("2_sam5g"), ExtResource("3_hiywk")])

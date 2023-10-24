@@ -3,6 +3,7 @@ using System;
 
 public partial class Goal : Resource
 {
+	[Export] public string goalName;
 	[Export] public GoalResource goalResource;
 	[Export] public int currentValue,targetValue;
 	[Export] public bool completed;
@@ -19,7 +20,6 @@ public partial class Goal : Resource
 	public void UpdateGoal(int value,string name)
 	{
 		currentValue = value;
-		
 		if(value>=targetValue)
 		{
 			currentValue=targetValue;
@@ -27,13 +27,11 @@ public partial class Goal : Resource
 			completed=true;
 			EmitSignal("OnGoalCompleted");
 		}
-
 		else
 		{
 			EmitSignal("OnGoalProgress");
 
 		}
-
 	}
 
 }

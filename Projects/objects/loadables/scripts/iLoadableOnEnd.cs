@@ -38,7 +38,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 			if(statsConsumed[i].currentValue - rateConsumed[i] * delta < statsConsumed[i].minValue)
 			{
 				valid=false;
-				GD.Print("Is not valid consumed");
+				//GD.Print("Is not valid consumed");
 			}
 
 		}
@@ -48,7 +48,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 			if(onEndStatConsumed[j].currentValue - onEndStatConsumedAmount[j] < onEndStatConsumed[j].minValue)
 			{
 				valid = false;
-				GD.Print("Is not valid consumed end");
+				//GD.Print("Is not valid consumed end");
 			}
 		}
 

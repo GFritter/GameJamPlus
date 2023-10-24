@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b806le0r4bvkt" path="res://art/PIso1.png" id="1_rh2np"]
 [ext_resource type="PackedScene" uid="uid://ckpuifjtupc4p" path="res://objects/loadables/furniture/work.tscn" id="2_pi0tu"]
 [ext_resource type="PackedScene" uid="uid://cbgvjdesbaqm2" path="res://objects/player/player.tscn" id="3_etbv1"]
+[ext_resource type="Resource" uid="uid://checwf8lbb4qm" path="res://resources/attributes/welfare.tres" id="3_o5yfg"]
 [ext_resource type="PackedScene" uid="uid://tcu5qlgcj5a0" path="res://scenes/UI.tscn" id="4_0wgax"]
 [ext_resource type="PackedScene" uid="uid://cskux0wlu085s" path="res://objects/loadables/furniture/fridge.tscn" id="6_e887u"]
 [ext_resource type="PackedScene" uid="uid://bqpg6nhbtkg0c" path="res://objects/loadables/furniture/garden.tscn" id="7_gl2fg"]

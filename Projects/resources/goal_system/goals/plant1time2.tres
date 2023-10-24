@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ye46wirnged4"]
+
+[ext_resource type="Resource" uid="uid://j26e3kpclu5e" path="res://resources/goal_system/goal_resources/PlantGoal.tres" id="1_l1ihg"]
+[ext_resource type="Script" path="res://resources/goal_system/Goal.cs" id="2_8yw4g"]
+
+[resource]
+script = ExtResource("2_8yw4g")
+goalName = "Begin! Plant 1 time"
+goalResource = ExtResource("1_l1ihg")
+currentValue = 0
+targetValue = 1
+completed = false

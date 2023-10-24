@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_mkeof"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_ykp48"]
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="4_sv4er"]
-[ext_resource type="Resource" uid="uid://h2ny1bcgerhf" path="res://resources/attributes/napRate.tres" id="5_gqqgj"]
+[ext_resource type="Resource" path="res://resources/attributes/napRate.tres" id="5_gqqgj"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_hef58"]
 [ext_resource type="Texture2D" uid="uid://damf6tstyhd71" path="res://art/furniture/Sofá.png" id="6_3x2mb"]
 [ext_resource type="PackedScene" uid="uid://cwe3u2n3gngv3" path="res://particles/plus_energy.tscn" id="6_5oo6x"]

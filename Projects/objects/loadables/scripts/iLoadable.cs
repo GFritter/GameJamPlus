@@ -118,6 +118,7 @@ public partial class iLoadable : Node2D
 		if(playOnEnd != null) playOnEnd.Play();
 		Spawn(particlesOnEnd);
 		EmitSignal("onComplete");
+		managedResource.AddAmount(1);
 		Reset();
 	}
 	protected virtual void OnEmpty(){
