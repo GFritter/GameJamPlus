@@ -1,3 +1,8 @@
-[gd_resource type="Resource" format=3 uid="uid://d2te2lqtle0yg"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2te2lqtle0yg"]
+
+[ext_resource type="Script" path="res://resources/goal_system/GoalResource.cs" id="1_n8p8e"]
 
 [resource]
+script = ExtResource("1_n8p8e")
+name = "stove"
+value = 0

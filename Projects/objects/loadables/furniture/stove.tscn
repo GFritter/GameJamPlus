@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0gw8kri1y3uy"]
+[gd_scene load_steps=17 format=3 uid="uid://d0gw8kri1y3uy"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_dvufg"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="3_krnil"]
@@ -8,10 +8,12 @@
 [ext_resource type="Resource" uid="uid://ckwwfvsslv4ld" path="res://resources/attributes/cookRate.tres" id="6_02qk3"]
 [ext_resource type="Resource" uid="uid://dr3x5e8hrakh5" path="res://resources/player_resources/Dish.tres" id="6_fiph7"]
 [ext_resource type="PackedScene" uid="uid://woi643pmr16m" path="res://particles/minus_meal.tscn" id="7_8c2jm"]
+[ext_resource type="Resource" path="res://resources/attributes/welfare.tres" id="8_l5mql"]
 [ext_resource type="Texture2D" uid="uid://roul0l6nt3bb" path="res://art/furniture/fogão.png" id="8_nkmxy"]
 [ext_resource type="AudioStream" uid="uid://chhtvdwudvkh0" path="res://sounds/cooking.wav" id="8_taqtd"]
 [ext_resource type="PackedScene" uid="uid://c7ysrd67ug1xt" path="res://particles/plus_food.tscn" id="8_tfqhu"]
 [ext_resource type="PackedScene" uid="uid://cwe3u2n3gngv3" path="res://particles/plus_energy.tscn" id="9_5eafi"]
+[ext_resource type="Resource" uid="uid://d2te2lqtle0yg" path="res://resources/goal_system/goal_resources/StoveGoal.tres" id="9_hce2f"]
 [ext_resource type="PackedScene" uid="uid://d0fgnm2ex1yij" path="res://particles/plus_brain.tscn" id="10_3k6ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8drb"]
@@ -28,6 +30,8 @@ bar = NodePath("ProgressBar")
 maxValue = 7.5
 decayPerSecond = 0.1
 attribute = ExtResource("6_02qk3")
+welfare = ExtResource("8_l5mql")
+managedResource = ExtResource("9_hce2f")
 playOnProcess = NodePath("PlayOnProcess")
 playOnEnd = NodePath("PlayOnEnd")
 particlesOnEnd = Array[PackedScene]([ExtResource("7_8c2jm"), ExtResource("8_tfqhu"), ExtResource("10_3k6ir"), ExtResource("9_5eafi")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbsripy56erc3"]
+[gd_scene load_steps=26 format=3 uid="uid://bbsripy56erc3"]
 
 [ext_resource type="PackedScene" uid="uid://l5oxr6ieqa1j" path="res://objects/loadables/furniture/dish.tscn" id="1_hsx2b"]
 [ext_resource type="Texture2D" uid="uid://b806le0r4bvkt" path="res://art/PIso1.png" id="1_rh2np"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bqpg6nhbtkg0c" path="res://objects/loadables/furniture/garden.tscn" id="7_gl2fg"]
 [ext_resource type="Texture2D" uid="uid://bm2ug6j1ye3ch" path="res://art/parede.png" id="8_16dcy"]
 [ext_resource type="PackedScene" uid="uid://csqugoxtv4eu6" path="res://objects/loadables/furniture/sofa.tscn" id="8_x48ki"]
+[ext_resource type="Texture2D" uid="uid://drbtn17xo6syb" path="res://art/Censura-cadeira.png" id="9_4i2gg"]
 [ext_resource type="PackedScene" uid="uid://d0gw8kri1y3uy" path="res://objects/loadables/furniture/stove.tscn" id="9_f80hg"]
+[ext_resource type="Texture2D" uid="uid://bhcyfnnar6u52" path="res://art/Censura-sofá.png" id="10_c256v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq1ss"]
 texture = ExtResource("1_rh2np")
@@ -41,6 +43,75 @@ sources/0 = SubResource("TileSetAtlasSource_gq1ss")
 sources/1 = SubResource("TileSetScenesCollectionSource_x76mp")
 sources/2 = SubResource("TileSetAtlasSource_gj455")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ndr"]
+atlas = ExtResource("9_4i2gg")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfmbw"]
+atlas = ExtResource("9_4i2gg")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whlu7"]
+atlas = ExtResource("9_4i2gg")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg6w3"]
+atlas = ExtResource("9_4i2gg")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shrhr"]
+atlas = ExtResource("10_c256v")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uloe1"]
+atlas = ExtResource("10_c256v")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwwox"]
+atlas = ExtResource("10_c256v")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sipf5"]
+atlas = ExtResource("10_c256v")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l13ft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3ndr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfmbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whlu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg6w3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shrhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uloe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwwox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sipf5")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -55,6 +126,23 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(851981, 1, 196608, 720917, 1, 65536, 720915, 1, 131072, 1114135, 1, 262144, 1376268, 1, 393216, 720919, 1, 327680)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TileMap"]
+position = Vector2(280, 335)
+sprite_frames = SubResource("SpriteFrames_l13ft")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TileMap"]
+position = Vector2(390, 238)
+sprite_frames = SubResource("SpriteFrames_l13ft")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="TileMap"]
+position = Vector2(184, 215)
+sprite_frames = SubResource("SpriteFrames_l13ft")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="TileMap"]
+position = Vector2(379, 335)
+sprite_frames = SubResource("SpriteFrames_l13ft")
+animation = &"new_animation"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

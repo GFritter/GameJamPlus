@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://diqdkt3ncb2pn"]
+[gd_scene load_steps=6 format=3 uid="uid://diqdkt3ncb2pn"]
 
 [ext_resource type="Script" path="res://environment/daytime/DayNight.cs" id="1_hfbhf"]
+[ext_resource type="LabelSettings" uid="uid://4ajhr8ur1xt5" path="res://labelSettings.tres" id="2_4j10k"]
+[ext_resource type="PackedScene" uid="uid://dght2csusjxuj" path="res://resources/goal_system/goal_manager.tscn" id="2_fnw2j"]
+[ext_resource type="Resource" uid="uid://bybbhu84r36bl" path="res://resources/goal_system/goal_lists/Day1Goals.tres" id="3_qh8eg"]
+[ext_resource type="Resource" path="res://resources/goal_system/goal_lists/Day2Goals.tres" id="4_4drr3"]
 
 [node name="DayNight" type="Control" node_paths=PackedStringArray("clockTimer", "clockLabel", "dayLabel")]
 layout_mode = 3
@@ -27,9 +31,11 @@ grow_vertical = 2
 
 [node name="DayLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+label_settings = ExtResource("2_4j10k")
 vertical_alignment = 1
 
 [node name="ClockLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+label_settings = ExtResource("2_4j10k")
 vertical_alignment = 1

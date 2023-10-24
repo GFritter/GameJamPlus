@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://f62sdy3c756f"]
+
+[ext_resource type="Script" path="res://resources/goal_system/GoalUiItem.cs" id="1_vxmbu"]
+[ext_resource type="FontFile" uid="uid://c6ql2kae3dy0j" path="res://Fipps-Regular.otf" id="2_2a21j"]
+[ext_resource type="LabelSettings" uid="uid://4ajhr8ur1xt5" path="res://labelSettings.tres" id="3_ys6x4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fn30r"]
+font = ExtResource("2_2a21j")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.52549)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbavb"]
+font = ExtResource("2_2a21j")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="goalUITemplate" type="HBoxContainer" node_paths=PackedStringArray("image", "name", "current", "target")]
+custom_minimum_size = Vector2(500, 32)
+script = ExtResource("1_vxmbu")
+image = NodePath("TextureRect")
+name = NodePath("Goal Name")
+current = NodePath("Current")
+target = NodePath("Target")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Goal Name" type="Label" parent="."]
+layout_mode = 2
+text = "Go And Do Some Stuff Man"
+label_settings = SubResource("LabelSettings_fn30r")
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_wbavb")
+vertical_alignment = 1
+
+[node name="Target" type="Label" parent="."]
+layout_mode = 2
+text = "/0"
+label_settings = ExtResource("3_ys6x4")
+vertical_alignment = 1

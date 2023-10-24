@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqpg6nhbtkg0c"]
+[gd_scene load_steps=18 format=3 uid="uid://bqpg6nhbtkg0c"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_rmhec"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_jcchp"]
@@ -6,8 +6,10 @@
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_lcp1e"]
 [ext_resource type="Resource" uid="uid://p57x3t6fyo73" path="res://resources/attributes/plantRate.tres" id="5_vrj5b"]
 [ext_resource type="PackedScene" uid="uid://d0fgnm2ex1yij" path="res://particles/plus_brain.tscn" id="6_2mlui"]
+[ext_resource type="Resource" path="res://resources/attributes/welfare.tres" id="6_ealdr"]
 [ext_resource type="Texture2D" uid="uid://coffoqn0xlhsy" path="res://art/furniture/plantas-solo.png" id="6_om6ga"]
 [ext_resource type="Texture2D" uid="uid://bef1djvju3ghn" path="res://art/plants/Bambu-2.png" id="7_fbrnt"]
+[ext_resource type="Resource" uid="uid://j26e3kpclu5e" path="res://resources/goal_system/goal_resources/PlantGoal.tres" id="7_qhber"]
 [ext_resource type="PackedScene" uid="uid://dk17e4t53xh7p" path="res://particles/minus_energy.tscn" id="7_stodh"]
 [ext_resource type="PackedScene" uid="uid://cwe3u2n3gngv3" path="res://particles/plus_energy.tscn" id="8_363mg"]
 [ext_resource type="Texture2D" uid="uid://fvp61mc4p1px" path="res://art/plants/Florzinha2-2.png" id="8_chc3t"]
@@ -30,6 +32,8 @@ bar = NodePath("ProgressBar")
 maxValue = 7.5
 decayPerSecond = 0.1
 attribute = ExtResource("5_vrj5b")
+welfare = ExtResource("6_ealdr")
+managedResource = ExtResource("7_qhber")
 playOnProcess = NodePath("PlayOnProcess")
 playOnEnd = NodePath("PlayOnEnd")
 particlesOnProcess = Array[PackedScene]([ExtResource("6_2mlui"), ExtResource("7_stodh"), ExtResource("8_xcvdt")])

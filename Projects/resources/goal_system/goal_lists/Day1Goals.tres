@@ -2,6 +2,8 @@
 
 [ext_resource type="Resource" uid="uid://b1vk1aw3acogd" path="res://resources/goal_system/goals/work3times.tres" id="1_payyh"]
 [ext_resource type="Script" path="res://resources/goal_system/GoalList.cs" id="2_nuxld"]
+[ext_resource type="Resource" path="res://resources/goal_system/goals/plant1time.tres" id="2_u0gen"]
+[ext_resource type="Resource" path="res://resources/goal_system/goals/plant1time2.tres" id="3_401m0"]
 
 [resource]
 script = ExtResource("2_nuxld")

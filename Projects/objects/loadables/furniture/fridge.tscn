@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cskux0wlu085s"]
+[gd_scene load_steps=11 format=3 uid="uid://cskux0wlu085s"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_fxywg"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="2_csgss"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="3_10bpd"]
 [ext_resource type="Resource" uid="uid://bhij6ooh3p8gy" path="res://resources/attributes/buyFoodRate.tres" id="4_wngce"]
 [ext_resource type="PackedScene" uid="uid://dh321b7mlu8ak" path="res://particles/minus_money.tscn" id="5_avant"]
+[ext_resource type="Resource" path="res://resources/attributes/welfare.tres" id="5_cm1yy"]
+[ext_resource type="Resource" uid="uid://c2j4x2egx5ma7" path="res://resources/goal_system/goal_resources/FridgeGoal.tres" id="6_655kd"]
 [ext_resource type="PackedScene" uid="uid://ce1mef6ftp4ok" path="res://particles/plus_meal.tscn" id="6_ksrxb"]
 [ext_resource type="Texture2D" uid="uid://de07gchvs70ir" path="res://art/furniture/geladeita.png" id="7_8rkkh"]
 
@@ -22,6 +24,8 @@ bar = NodePath("ProgressBar")
 maxValue = 7.5
 decayPerSecond = 0.1
 attribute = ExtResource("4_wngce")
+welfare = ExtResource("5_cm1yy")
+managedResource = ExtResource("6_655kd")
 playOnProcess = NodePath("PlayOnProcess")
 playOnEnd = NodePath("PlayOnEnd")
 particlesOnProcess = Array[Resource]([])

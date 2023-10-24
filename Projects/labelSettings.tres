@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://4ajhr8ur1xt5"]
+
+[ext_resource type="FontFile" uid="uid://c6ql2kae3dy0j" path="res://Fipps-Regular.otf" id="1_gxm6p"]
+
+[resource]
+font = ExtResource("1_gxm6p")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
