@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxali2vk1yn7u"]
+[gd_scene load_steps=4 format=3 uid="uid://dght2csusjxuj"]
 
 [ext_resource type="Script" path="res://resources/goal_system/GoalManager.cs" id="1_j5i8m"]
 [ext_resource type="Resource" uid="uid://bybbhu84r36bl" path="res://resources/goal_system/goal_lists/Day1Goals.tres" id="2_k0cwq"]
-[ext_resource type="PackedScene" uid="uid://dlkgq5yobuumo" path="res://resources/goal_system/goalUITemplate.tscn" id="3_yd2xc"]
+[ext_resource type="PackedScene" uid="uid://f62sdy3c756f" path="res://resources/goal_system/goalUITemplate.tscn" id="3_yd2xc"]
 
 [node name="GoalManager" type="Control" node_paths=PackedStringArray("listContainer")]
 layout_mode = 3

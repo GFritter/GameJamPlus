@@ -20,8 +20,6 @@ public partial class Goal : Resource
 	public void UpdateGoal(int value,string name)
 	{
 		currentValue = value;
-		EmitSignal("OnGoalProgress");
-
 		if(value>=targetValue)
 		{
 			currentValue=targetValue;
@@ -29,7 +27,11 @@ public partial class Goal : Resource
 			completed=true;
 			EmitSignal("OnGoalCompleted");
 		}
+		else
+		{
+			EmitSignal("OnGoalProgress");
 
+		}
 	}
 
 }

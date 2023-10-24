@@ -1,8 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3r0ibrr3vmaa"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c31ufy4e4qet5"]
 
 [ext_resource type="Script" path="res://resources/goal_system/GoalResource.cs" id="1_hqibf"]
 
 [resource]
 script = ExtResource("1_hqibf")
-name = ""
+name = "nap"
 value = 0

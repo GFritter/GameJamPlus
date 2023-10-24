@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://75kt354qa8cy"]
+
+[ext_resource type="Texture2D" uid="uid://dutpbhmpiqfnx" path="res://art/particles/foodMinus.png" id="1_vw642"]
+[ext_resource type="Script" path="res://ParticleSpawner.cs" id="2_x4ysy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1qfg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 63.16
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[node name="MinusFood" type="GPUParticles2D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_m1qfg")
+texture = ExtResource("1_vw642")
+one_shot = true
+script = ExtResource("2_x4ysy")

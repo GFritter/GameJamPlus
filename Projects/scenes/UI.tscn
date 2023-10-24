@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tcu5qlgcj5a0"]
+[gd_scene load_steps=16 format=3 uid="uid://tcu5qlgcj5a0"]
 
 [ext_resource type="Script" path="res://scenes/UIManager.cs" id="1_cbslb"]
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="2_6s4p8"]
@@ -7,9 +7,10 @@
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="5_6kcut"]
 [ext_resource type="Resource" uid="uid://c3ll01kun3xvi" path="res://resources/player_resources/Food.tres" id="6_7r307"]
 [ext_resource type="PackedScene" uid="uid://diqdkt3ncb2pn" path="res://environment/daytime/DayNight.tscn" id="7_0q6fw"]
-[ext_resource type="Texture2D" uid="uid://20jfuux0pnwf" path="res://art/icons/MoneyIcon.png" id="7_gqvmt"]
-[ext_resource type="Texture2D" uid="uid://chob7vpc1qdbh" path="res://art/icons/foodIcon.png" id="8_1ymjm"]
+[ext_resource type="Texture2D" uid="uid://bxcoo8fujshwi" path="res://art/icons/Moeda (2).png" id="8_4o7v4"]
+[ext_resource type="LabelSettings" uid="uid://4ajhr8ur1xt5" path="res://labelSettings.tres" id="9_5hxrf"]
 [ext_resource type="Texture2D" uid="uid://cpg3nf5237lkt" path="res://art/icons/radialBackgroun.png" id="9_eunj7"]
+[ext_resource type="Texture2D" uid="uid://dy524b8jw81er" path="res://art/icons/comida geladeira.png" id="10_7kpgy"]
 [ext_resource type="Texture2D" uid="uid://deidpsgf4njiy" path="res://art/icons/energia.png" id="10_qlc84"]
 [ext_resource type="Texture2D" uid="uid://bohmer2llkp4c" path="res://art/icons/radialProgress.png" id="11_aj7w7"]
 [ext_resource type="Texture2D" uid="uid://b8js7t3ekcqy" path="res://art/icons/sanidade-icon.png" id="12_n33kk"]
@@ -52,6 +53,7 @@ layout_mode = 2
 [node name="DayNight" parent="MarginContainer/VBoxContainer" instance=ExtResource("7_0q6fw")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+minutesPerDay = 2.0
 
 [node name="MoneyInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -59,13 +61,14 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MoneyInfo"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("7_gqvmt")
+texture = ExtResource("8_4o7v4")
 expand_mode = 2
 stretch_mode = 4
 
 [node name="Money" type="Label" parent="MarginContainer/VBoxContainer/MoneyInfo"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+label_settings = ExtResource("9_5hxrf")
 vertical_alignment = 1
 
 [node name="FoodInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -74,13 +77,14 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/FoodInfo"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("8_1ymjm")
+texture = ExtResource("10_7kpgy")
 expand_mode = 2
 stretch_mode = 4
 
 [node name="Food" type="Label" parent="MarginContainer/VBoxContainer/FoodInfo"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+label_settings = ExtResource("9_5hxrf")
 vertical_alignment = 1
 
 [node name="EnergyBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
@@ -92,12 +96,14 @@ texture_progress = ExtResource("11_aj7w7")
 
 [node name="MindBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+fill_mode = 4
 texture_under = ExtResource("9_eunj7")
 texture_over = ExtResource("12_n33kk")
 texture_progress = ExtResource("11_aj7w7")
 
 [node name="HungerBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+fill_mode = 4
 texture_under = ExtResource("9_eunj7")
 texture_over = ExtResource("13_25afu")
 texture_progress = ExtResource("11_aj7w7")

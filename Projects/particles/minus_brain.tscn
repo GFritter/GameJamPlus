@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c82g8s4aw0fnt"]
+
+[ext_resource type="Texture2D" uid="uid://cwfm02mbb5xi7" path="res://art/particles/brainMinus.png" id="1_hab14"]
+[ext_resource type="Script" path="res://ParticleSpawner.cs" id="2_ekjgb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1qfg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 63.16
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[node name="MinusBrain" type="GPUParticles2D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_m1qfg")
+texture = ExtResource("1_hab14")
+one_shot = true
+script = ExtResource("2_ekjgb")
