@@ -1,18 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://csqugoxtv4eu6"]
+[gd_scene load_steps=16 format=3 uid="uid://csqugoxtv4eu6"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_mkeof"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_ykp48"]
 [ext_resource type="Resource" uid="uid://30lwcvx68b8g" path="res://resources/player_resources/Hunger.tres" id="4_sv4er"]
-[ext_resource type="Resource" path="res://resources/attributes/napRate.tres" id="5_gqqgj"]
+[ext_resource type="Resource" uid="uid://h2ny1bcgerhf" path="res://resources/attributes/napRate.tres" id="5_gqqgj"]
 [ext_resource type="Resource" uid="uid://d2driynhfcqy8" path="res://resources/player_resources/Brawn.tres" id="5_hef58"]
 [ext_resource type="Texture2D" uid="uid://damf6tstyhd71" path="res://art/furniture/Sofá.png" id="6_3x2mb"]
 [ext_resource type="PackedScene" uid="uid://cwe3u2n3gngv3" path="res://particles/plus_energy.tscn" id="6_5oo6x"]
 [ext_resource type="Resource" path="res://resources/attributes/welfare.tres" id="6_gyatb"]
 [ext_resource type="Resource" uid="uid://c31ufy4e4qet5" path="res://resources/goal_system/goal_resources/NapGoal.tres" id="7_630ka"]
 [ext_resource type="PackedScene" uid="uid://d0fgnm2ex1yij" path="res://particles/plus_brain.tscn" id="7_j1iva"]
+[ext_resource type="Texture2D" uid="uid://b07fwe1qhv211" path="res://art/icons/loading_bar.png" id="10_3idcd"]
+[ext_resource type="Texture2D" uid="uid://b3a8o0ct6drgf" path="res://art/icons/loading_bar_fill.png" id="11_6ywgb"]
+[ext_resource type="Script" path="res://objects/loadables/furniture/BarActivator.cs" id="12_5dghx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy5px"]
 size = Vector2(35, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_843yo"]
+size = Vector2(39, 22)
 
 [node name="Sofa" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_mkeof")
@@ -41,13 +47,14 @@ shape = SubResource("RectangleShape2D_uy5px")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -32.0
-offset_top = -15.0
+offset_top = -22.0
 offset_right = 32.0
-offset_bottom = -10.0
-value = 0.17
-show_percentage = false
+offset_bottom = -14.0
+texture_under = ExtResource("10_3idcd")
+texture_progress = ExtResource("11_6ywgb")
+script = ExtResource("12_5dghx")
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture = ExtResource("6_3x2mb")
@@ -55,6 +62,12 @@ texture = ExtResource("6_3x2mb")
 [node name="PlayOnProcess" type="AudioStreamPlayer2D" parent="."]
 
 [node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_843yo")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadable.cs" id="1_assvm"]
 [ext_resource type="Script" path="res://objects/loadables/AttributeAnimation.cs" id="2_0qerm"]
-[ext_resource type="Resource" uid="uid://checwf8lbb4qm" path="res://resources/attributes/welfare.tres" id="2_d3w40"]
+[ext_resource type="Resource" path="res://resources/attributes/welfare.tres" id="2_d3w40"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g8ft"]
 radius = 20.025

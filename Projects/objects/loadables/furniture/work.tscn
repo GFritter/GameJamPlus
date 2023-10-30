@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckpuifjtupc4p"]
+[gd_scene load_steps=20 format=3 uid="uid://ckpuifjtupc4p"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_yhofc"]
 [ext_resource type="Resource" uid="uid://bgygxsp3ptoqh" path="res://resources/player_resources/Money.tres" id="2_7pjsy"]
@@ -14,9 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://dk17e4t53xh7p" path="res://particles/minus_energy.tscn" id="8_ylqu7"]
 [ext_resource type="PackedScene" uid="uid://75kt354qa8cy" path="res://particles/minus_food.tscn" id="9_h7x1d"]
 [ext_resource type="PackedScene" uid="uid://bho7oocrv1vix" path="res://particles/plus_money.tscn" id="10_i622f"]
+[ext_resource type="Texture2D" uid="uid://b07fwe1qhv211" path="res://art/icons/loading_bar.png" id="13_nrsgb"]
+[ext_resource type="Texture2D" uid="uid://b3a8o0ct6drgf" path="res://art/icons/loading_bar_fill.png" id="14_7bj3o"]
+[ext_resource type="Script" path="res://objects/loadables/furniture/BarActivator.cs" id="15_5axyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37kee"]
 size = Vector2(43, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykoy5"]
+size = Vector2(44, 13)
 
 [node name="Work" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_yhofc")
@@ -45,13 +51,16 @@ shape = SubResource("RectangleShape2D_37kee")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -32.0
-offset_top = 8.0
+offset_top = 17.0
 offset_right = 32.0
-offset_bottom = 13.0
-value = 0.17
-show_percentage = false
+offset_bottom = 25.0
+scale = Vector2(1, -1)
+fill_mode = 1
+texture_under = ExtResource("13_nrsgb")
+texture_progress = ExtResource("14_7bj3o")
+script = ExtResource("15_5axyu")
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture = ExtResource("8_ghrs8")
@@ -61,6 +70,12 @@ stream = ExtResource("8_y1cju")
 volume_db = 1.0
 
 [node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ykoy5")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

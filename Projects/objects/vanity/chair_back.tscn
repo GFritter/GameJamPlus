@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bipehh3fdxlkf"]
+
+[ext_resource type="Texture2D" uid="uid://dwo8qtm8b0rqq" path="res://art/furniture/cadeira_costas.png" id="1_jyjne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at1c4"]
+size = Vector2(13, 24)
+
+[node name="ChairBack" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jyjne")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_at1c4")

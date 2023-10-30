@@ -1,23 +1,104 @@
-[gd_scene load_steps=4 format=3 uid="uid://dght2csusjxuj"]
+[gd_scene load_steps=12 format=3 uid="uid://dght2csusjxuj"]
 
 [ext_resource type="Script" path="res://resources/goal_system/GoalManager.cs" id="1_j5i8m"]
 [ext_resource type="Resource" uid="uid://bybbhu84r36bl" path="res://resources/goal_system/goal_lists/Day1Goals.tres" id="2_k0cwq"]
 [ext_resource type="PackedScene" uid="uid://f62sdy3c756f" path="res://resources/goal_system/goalUITemplate.tscn" id="3_yd2xc"]
+[ext_resource type="StyleBox" uid="uid://dn0xrpksvwboj" path="res://resources/UIStyles/NeedsPanelStyleBox.tres" id="4_5wmg1"]
+[ext_resource type="Texture2D" uid="uid://h0co5w5410oe" path="res://art/icons/tasks_button.png" id="4_ckmba"]
+[ext_resource type="Texture2D" uid="uid://cs2v3p0lml4rf" path="res://art/icons/tasks_button_press.png" id="5_kmshc"]
+[ext_resource type="StyleBox" uid="uid://cojcrh27pbwsw" path="res://resources/UIStyles/ScrollButtonStyle.tres" id="5_soufp"]
+[ext_resource type="Texture2D" uid="uid://dsecv3pc8ymid" path="res://art/icons/tasks_button_hl.png" id="6_yu1b1"]
 
-[node name="GoalManager" type="Control" node_paths=PackedStringArray("listContainer")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8toh"]
+bg_color = Color(1, 0.482353, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itlew"]
+bg_color = Color(1, 0.482353, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_503xv"]
+PanelContainer/styles/PanelStyle = null
+ScrollContainer/styles/panel = ExtResource("4_5wmg1")
+VScrollBar/styles/grabber = ExtResource("5_soufp")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_t8toh")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_itlew")
+
+[node name="GoalManager" type="Control" node_paths=PackedStringArray("openGoalsButton", "closeGoalsButton", "goalContainer", "listContainer")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("1_j5i8m")
 dailyGoals = Array[Resource]([ExtResource("2_k0cwq")])
 goalUITemplate = ExtResource("3_yd2xc")
-listContainer = NodePath("VBoxContainer")
+openGoalsButton = NodePath("Button")
+closeGoalsButton = NodePath("Control/Button2")
+goalContainer = NodePath("Control")
+listContainer = NodePath("Control/ScrollContainer/VBoxContainer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = -16.0
+grow_vertical = 0
+texture_normal = ExtResource("4_ckmba")
+texture_pressed = ExtResource("5_kmshc")
+texture_hover = ExtResource("6_yu1b1")
+stretch_mode = 4
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 520.0
+grow_vertical = 0
+theme = SubResource("Theme_503xv")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
 custom_minimum_size = Vector2(500, 60)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Button2" type="TextureButton" parent="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+offset_left = 503.0
+offset_top = -215.0
+offset_right = 535.0
+offset_bottom = -183.0
+grow_vertical = 0
+texture_normal = ExtResource("4_ckmba")
+texture_pressed = ExtResource("5_kmshc")
+texture_hover = ExtResource("6_yu1b1")
+stretch_mode = 4

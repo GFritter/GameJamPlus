@@ -16,7 +16,8 @@ public partial class DayNight : Control
 
     public override void _Ready()
     {
-       OnDayBegin();
+        clockTimer.Timeout += HandleDayTime;
+        OnDayBegin();
     }
     private float CalculateMinutesPerSecond(){
         int totalSeconds = (int)minutesPerDay * 60;
@@ -38,9 +39,7 @@ public partial class DayNight : Control
     { 
         goalManager.NewDay();
         clockTimer.Start(1 / CalculateMinutesPerSecond());
-        clockTimer.Timeout += HandleDayTime;
         dayLabel.Text = "Day " + currentDay;
-
     }
 
     public override void _Process(double delta)

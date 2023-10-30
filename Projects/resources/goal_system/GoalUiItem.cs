@@ -44,7 +44,11 @@ public partial class GoalUiItem : Control
 		current.Text = goal.currentValue.ToString();
 		target.Text = "/"+goal.targetValue.ToString();
 	}
-
+	public void RemoveUIElements(){
+		goal.OnGoalProgress-=UpdateUIElements;
+		goal.OnGoalCompleted-=CompleteTask;
+		QueueFree();
+	}
 	public void CompleteTask()
 	{
 		GD.Print("completei a minha taskt");

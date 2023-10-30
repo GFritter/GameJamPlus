@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_jqslc")
 flatRate = 1.0
-modifier = 10.0
+modifier = 1.0

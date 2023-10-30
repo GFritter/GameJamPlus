@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cmy3q0vrq8ykr"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://fpec4t2vkse8"]
 
 [ext_resource type="Resource" uid="uid://bnasc4m7jm5qs" path="res://resources/goal_system/goals/day_two/RegularWorkDay.tres" id="1_xuj1d"]
 [ext_resource type="Resource" uid="uid://cbi8j5q2y2b5t" path="res://resources/goal_system/goals/day_two/ExtraHours.tres" id="2_sam5g"]
