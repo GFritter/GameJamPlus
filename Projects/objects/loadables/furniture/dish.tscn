@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://l5oxr6ieqa1j"]
+[gd_scene load_steps=23 format=3 uid="uid://l5oxr6ieqa1j"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_71ng1"]
 [ext_resource type="Texture2D" uid="uid://djpehuqk3iglh" path="res://art/furniture/pia suja.png" id="2_68s5l"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dk17e4t53xh7p" path="res://particles/minus_energy.tscn" id="7_q36s2"]
 [ext_resource type="Resource" uid="uid://dnf1s5bq5qylf" path="res://resources/goal_system/goal_resources/DishGoal.tres" id="8_8akgv"]
 [ext_resource type="Script" path="res://objects/loadables/AttributeAnimation.cs" id="9_x3otp"]
+[ext_resource type="Texture2D" uid="uid://b07fwe1qhv211" path="res://art/icons/loading_bar.png" id="11_dnurs"]
+[ext_resource type="Texture2D" uid="uid://b3a8o0ct6drgf" path="res://art/icons/loading_bar_fill.png" id="12_51apr"]
+[ext_resource type="Script" path="res://objects/loadables/furniture/BarActivator.cs" id="13_vwpkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovryv"]
 size = Vector2(24, 10)
@@ -27,10 +30,10 @@ tracks/0/path = NodePath("ObjectSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_68s5l")]
+"values": [ExtResource("3_kmwx7"), ExtResource("3_kmwx7")]
 }
 
 [sub_resource type="Animation" id="Animation_usr24"]
@@ -42,10 +45,10 @@ tracks/0/path = NodePath("ObjectSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_kmwx7")]
+"values": [ExtResource("2_68s5l"), ExtResource("2_68s5l")]
 }
 
 [sub_resource type="Animation" id="Animation_60smc"]
@@ -69,6 +72,9 @@ _data = {
 "Level1": SubResource("Animation_usr24"),
 "RESET": SubResource("Animation_60smc")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fyjt"]
+size = Vector2(40, 21)
 
 [node name="Dish" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 script = ExtResource("1_71ng1")
@@ -96,13 +102,14 @@ shape = SubResource("RectangleShape2D_ovryv")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -32.0
-offset_top = -15.0
+offset_top = -21.0
 offset_right = 32.0
-offset_bottom = -10.0
-value = 0.17
-show_percentage = false
+offset_bottom = -13.0
+texture_under = ExtResource("11_dnurs")
+texture_progress = ExtResource("12_51apr")
+script = ExtResource("13_vwpkh")
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_68s5l")
@@ -112,10 +119,17 @@ libraries = {
 "": SubResource("AnimationLibrary_hnjty")
 }
 script = ExtResource("9_x3otp")
+dishStat = ExtResource("2_f7m22")
 
 [node name="AudioStreamProcessing" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AudioStreamEnded" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_4fyjt")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

@@ -10,7 +10,7 @@ public partial class iLoadable : Node2D
 	public Area2D zoneArea;
 
 	[Export]
-	public ProgressBar bar;
+	public TextureProgressBar bar;
 
 	[Export]
 	public float minValue, currentValue, maxValue,decayPerSecond;

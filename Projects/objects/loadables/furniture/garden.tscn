@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqpg6nhbtkg0c"]
+[gd_scene load_steps=22 format=3 uid="uid://bqpg6nhbtkg0c"]
 
 [ext_resource type="Script" path="res://objects/loadables/scripts/iLoadableOnEnd.cs" id="1_rmhec"]
 [ext_resource type="Resource" uid="uid://by3qt8jhcoiv3" path="res://resources/player_resources/Brain.tres" id="3_jcchp"]
@@ -16,15 +16,21 @@
 [ext_resource type="PackedScene" uid="uid://75kt354qa8cy" path="res://particles/minus_food.tscn" id="8_xcvdt"]
 [ext_resource type="Texture2D" uid="uid://dqxttwxkpa5e3" path="res://art/plants/Girassol-2.png" id="9_ej4up"]
 [ext_resource type="AudioStream" uid="uid://brt2hv11080v4" path="res://sounds/gardenwork.wav" id="10_uy588"]
+[ext_resource type="Texture2D" uid="uid://b07fwe1qhv211" path="res://art/icons/loading_bar.png" id="12_p1qr4"]
+[ext_resource type="Texture2D" uid="uid://b3a8o0ct6drgf" path="res://art/icons/loading_bar_fill.png" id="13_oiyxl"]
+[ext_resource type="Script" path="res://objects/loadables/furniture/BarActivator.cs" id="14_0lkg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlph5"]
-size = Vector2(96, 32)
+size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_remxk"]
+size = Vector2(32, 96)
 
 [node name="Garden" type="Node2D" node_paths=PackedStringArray("zoneArea", "bar", "playOnProcess", "playOnEnd")]
 position = Vector2(8, 8)
 script = ExtResource("1_rmhec")
 onEndStatConsumed = Array[Resource]([ExtResource("3_jcchp"), ExtResource("5_lcp1e")])
-onEndStatConsumedAmount = Array[float]([-6.0, -6.0])
+onEndStatConsumedAmount = Array[float]([-3.0, -3.0])
 statsConsumed = Array[Resource]([ExtResource("4_grk0e"), ExtResource("5_lcp1e"), ExtResource("3_jcchp")])
 rateConsumed = Array[float]([0.6, 2.4, -1.2])
 zoneArea = NodePath("ZoneArea")
@@ -46,19 +52,20 @@ shape = SubResource("RectangleShape2D_tlph5")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -32.0
 offset_top = -57.0
 offset_right = 32.0
 offset_bottom = -52.0
-value = 0.17
-show_percentage = false
+texture_under = ExtResource("12_p1qr4")
+texture_progress = ExtResource("13_oiyxl")
+script = ExtResource("14_0lkg0")
 
 [node name="Plant" type="Node2D" parent="."]
 position = Vector2(0, 16)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Plant"]
-position = Vector2(0, 16)
+position = Vector2(32, -16)
 texture = ExtResource("6_om6ga")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plant/Sprite2D2"]
@@ -196,7 +203,7 @@ hframes = 5
 frame = 4
 
 [node name="Sprite2D11" type="Sprite2D" parent="Plant"]
-position = Vector2(0, -48)
+position = Vector2(32, -48)
 texture = ExtResource("6_om6ga")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plant/Sprite2D11"]
@@ -242,7 +249,7 @@ hframes = 5
 frame = 4
 
 [node name="Sprite2D12" type="Sprite2D" parent="Plant"]
-position = Vector2(32, -48)
+position = Vector2(-32, -16)
 texture = ExtResource("6_om6ga")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plant/Sprite2D12"]
@@ -287,10 +294,66 @@ texture = ExtResource("9_ej4up")
 hframes = 5
 frame = 4
 
+[node name="Sprite2D13" type="Sprite2D" parent="Plant"]
+position = Vector2(32, 16)
+texture = ExtResource("6_om6ga")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(-11, -12)
+texture = ExtResource("7_fbrnt")
+hframes = 4
+frame = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(10, 8)
+texture = ExtResource("8_chc3t")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D5" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(12, -13)
+texture = ExtResource("8_chc3t")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D7" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(-5, -7)
+texture = ExtResource("8_chc3t")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(-11, 10)
+texture = ExtResource("9_ej4up")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D8" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(5, -11)
+texture = ExtResource("9_ej4up")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D6" type="Sprite2D" parent="Plant/Sprite2D13"]
+position = Vector2(-5, 4)
+texture = ExtResource("9_ej4up")
+hframes = 5
+frame = 4
+
 [node name="PlayOnProcess" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_uy588")
 
 [node name="PlayOnEnd" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_remxk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_remxk")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="TestAreaEnter"]
 [connection signal="body_exited" from="ZoneArea" to="." method="TestAreaExit"]

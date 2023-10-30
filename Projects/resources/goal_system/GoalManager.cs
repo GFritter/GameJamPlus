@@ -11,6 +11,9 @@ public partial class GoalManager : Control
 
     [Export] public int dayIndex = -1;
 
+    [Export] public TextureButton openGoalsButton;
+    [Export] public TextureButton closeGoalsButton;
+    [Export] public Control goalContainer;
     [Export]public VBoxContainer listContainer;
 
     [Export] public Array<GoalResource> managedResources;
@@ -21,8 +24,17 @@ public partial class GoalManager : Control
         currentGoals = new GoalList();
         currentGoals.goals = new Array<Goal>();
         managedResources = new Array<GoalResource>();
+        openGoalsButton.Pressed += () => goalContainer.Visible = !goalContainer.Visible;
+        closeGoalsButton.Pressed += () => goalContainer.Visible = !goalContainer.Visible;
        //SetupDay();
        //SetupList();
+    }
+
+    public override void _UnhandledKeyInput(InputEvent @event)
+    {
+        if(Input.IsActionJustPressed("open_goals")){
+            goalContainer.Visible = !goalContainer.Visible;
+        }
     }
 
     public void SetupDay()
@@ -67,7 +79,7 @@ public partial class GoalManager : Control
             GoalUiItem refe = newItem as GoalUiItem;
             refe.SetupUIElement(currentGoals.goals[i]);
             currentGoals.goals[i].GoalSetup();
-            listContainer.AddChild(newItem);
+            listContainer.AddChild(refe);
         }
     }
 
@@ -79,8 +91,8 @@ public partial class GoalManager : Control
         {
              if(currentGoals.goals[i].completed==true)
             {
-               removalList.Add(currentGoals.goals[i]);
-   
+                removalList.Add(currentGoals.goals[i]);
+                currentGoals.goals[i].goalResource.OnValueChange-=ManageGoalResource;
             }
         }
 
@@ -91,10 +103,10 @@ public partial class GoalManager : Control
              currentGoals.goals.Remove(removalList[i]);
         }
 
-        foreach(Node n in listContainer.GetChildren())
+        foreach(GoalUiItem n in listContainer.GetChildren())
         {
-           listContainer.RemoveChild(n);
-           n.QueueFree();
+            listContainer.RemoveChild(n);
+            n.RemoveUIElements();
         }
 
 

@@ -7,6 +7,7 @@ public partial class iLoadableOnEnd : iLoadableConsumer
 
 	[Export]
 	public Array<Stat> onEndStatConsumed;
+	
 
 	[Export]
 	public Array<float> onEndStatConsumedAmount;

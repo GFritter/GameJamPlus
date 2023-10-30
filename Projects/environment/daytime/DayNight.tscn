@@ -1,8 +1,10 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqdkt3ncb2pn"]
+
 [ext_resource type="Script" path="res://environment/daytime/DayNight.cs" id="1_hfbhf"]
 [ext_resource type="LabelSettings" uid="uid://4ajhr8ur1xt5" path="res://labelSettings.tres" id="2_4j10k"]
 [ext_resource type="PackedScene" uid="uid://dght2csusjxuj" path="res://resources/goal_system/goal_manager.tscn" id="2_fnw2j"]
 [ext_resource type="Resource" uid="uid://bybbhu84r36bl" path="res://resources/goal_system/goal_lists/Day1Goals.tres" id="3_qh8eg"]
-[ext_resource type="Resource" path="res://resources/goal_system/goal_lists/Day2Goals.tres" id="4_4drr3"]
+[ext_resource type="Resource" uid="uid://fpec4t2vkse8" path="res://resources/goal_system/goal_lists/Day2Goals.tres" id="4_4drr3"]
 
 [node name="DayNight" type="Control" node_paths=PackedStringArray("clockTimer", "clockLabel", "dayLabel", "goalManager")]
 process_mode = 3
@@ -15,36 +17,40 @@ grow_vertical = 2
 script = ExtResource("1_hfbhf")
 minutesPerDay = 1.0
 clockTimer = NodePath("ClockTimer")
-clockLabel = NodePath("VBoxContainer/ClockLabel")
-dayLabel = NodePath("VBoxContainer/DayLabel")
-goalManager = NodePath("GoalManager")
+clockLabel = NodePath("VBoxContainer2/VBoxContainer/ClockLabel")
+dayLabel = NodePath("VBoxContainer2/VBoxContainer/DayLabel")
+goalManager = NodePath("VBoxContainer2/GoalManager")
 
 [node name="ClockTimer" type="Timer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DayLabel" type="Label" parent="VBoxContainer"]
+[node name="GoalManager" parent="VBoxContainer2" instance=ExtResource("2_fnw2j")]
 layout_mode = 2
-label_settings = ExtResource("2_4j10k")
-vertical_alignment = 1
-
-[node name="ClockLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-label_settings = ExtResource("2_4j10k")
-vertical_alignment = 1
-
-[node name="GoalManager" parent="." instance=ExtResource("2_fnw2j")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
 dailyGoals = Array[Resource]([ExtResource("3_qh8eg"), ExtResource("4_4drr3")])
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "aaa"
+label_settings = ExtResource("2_4j10k")
+vertical_alignment = 1
+
+[node name="ClockLabel" type="Label" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "aaa"
+label_settings = ExtResource("2_4j10k")
+vertical_alignment = 1
